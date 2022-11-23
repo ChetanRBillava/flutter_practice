@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.crb.flutter_practice.flutter_practice">
+    package="com.crb.flutter_practice">
    <application
-        android:label="flutter_practice"
+        android:label="Flutter practice app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
