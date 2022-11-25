@@ -21,6 +21,16 @@ Here we write the updates of future releases
 ### Security
 
 
+## [1.0.1] - 23-11-2022
+
+### Added
+- Presentation folder
+- Screens folder
+
+### Changed
+- Refactored home screen to different directory
+
+
 ## [1.0.0] - 23-11-2022
 
 ### Added
