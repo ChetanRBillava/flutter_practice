@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] - dd-mm-yyyy
 Here we write the updates of future releases
-
+1.0.xx belongs to Architecture support
 ### Added
 - Folders included in the architecture format
 
@@ -21,7 +21,17 @@ Here we write the updates of future releases
 ### Security
 
 
-## [1.0.1] - 23-11-2022
+## [1.0.2] - 27-11-2022
+
+### Added
+- Utils folder
+- App Texts file
+
+### Changed
+- Replaced generic app text widget with custom app text widget
+
+
+## [1.0.1] - 25-11-2022
 
 ### Added
 - Presentation folder

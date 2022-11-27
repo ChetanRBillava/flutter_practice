@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/presentation/utils/app_texts.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
@@ -45,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: Text(widget.title),
+          title: AppTexts(textString: widget.title,),
         ),
         body: Center(
           // Center is a layout widget. It takes a single child and positions it
@@ -67,13 +68,8 @@ class _HomeScreenState extends State<HomeScreen> {
             // horizontal).
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headline4,
-              ),
+              const AppTexts(textString: 'You have pushed the button this many times:',),
+              AppTexts(textString: '$_counter',textFontSize: 30,),
             ],
           ),
         ),
