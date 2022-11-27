@@ -5,8 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] - dd-mm-yyyy
-Here we write the updates of future releases
+Here we write the updates of future releases.
 1.0.xx belongs to Architecture support
+
 ### Added
 - Folders included in the architecture format
 
@@ -19,6 +20,16 @@ Here we write the updates of future releases
 ### Fixed
 
 ### Security
+
+
+## [1.0.6] - 27-11-2022
+
+### Added
+- Splash screen
+- Routing option for splash screen
+
+### Changed
+- Replaced the initial route option to "splash"
 
 
 ## [1.0.5] - 27-11-2022
