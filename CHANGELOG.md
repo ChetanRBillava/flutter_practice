@@ -21,6 +21,19 @@ Here we write the updates of future releases
 ### Security
 
 
+## [1.0.5] - 27-11-2022
+
+### Added
+- Integrated "Sizer" plugin for responsive font sizes
+- Constants folder
+- Images, Strings and bools file in constants folder
+- Custom print file for dynamic management of print statements
+
+### Changed
+- Replaced constant font values with Sizer properties for responsive font behaviour
+- Passed App title value from the constant value declared in "Strings" constant file
+
+
 ## [1.0.4] - 27-11-2022
 
 ### Added

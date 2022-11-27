@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/core/themes/app_theme.dart';
 import 'package:flutter_practice/presentation/utils/app_texts.dart';
+import 'package:sizer/sizer.dart';
 
+import '../utils/custom_print.dart';
 import '../widgets/app_bar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,13 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
+    customPrint.myCustomPrint(_counter);
   }
 
   @override
@@ -69,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const AppTexts(textString: 'You have pushed the button this many times:',),
-              AppTexts(textString: '$_counter',textFontSize: 30,),
+              AppTexts(textString: '$_counter',textFontSize: 25.sp,),
             ],
           ),
         ),

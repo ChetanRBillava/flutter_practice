@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class AppTexts extends StatefulWidget {
   const AppTexts({
@@ -28,7 +29,7 @@ class _AppTextsState extends State<AppTexts> {
       textAlign: widget.textAlign??TextAlign.start,
       style: TextStyle(
           color: widget.textColor??Theme.of(context).textTheme.bodyText1?.color,
-          fontSize: widget.textFontSize??12.0,
+          fontSize: widget.textFontSize??12.0.sp,
           fontWeight: widget.fontWeight??FontWeight.normal,
           fontFamily: 'Poppins'
       ),
