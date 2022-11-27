@@ -21,6 +21,19 @@ Here we write the updates of future releases
 ### Security
 
 
+## [1.0.3] - 27-11-2022
+
+### Added
+- Router folder
+- App router file
+- Core folder
+- Exceptions folder
+- Route exception file
+
+### Changed
+- Routing format in main file from generic to generated routes based on App router file
+
+
 ## [1.0.2] - 27-11-2022
 
 ### Added
