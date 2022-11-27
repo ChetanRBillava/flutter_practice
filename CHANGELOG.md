@@ -21,6 +21,19 @@ Here we write the updates of future releases
 ### Security
 
 
+## [1.0.4] - 27-11-2022
+
+### Added
+- Themes folder
+- App theme file for customised color combination in the app
+- Widgets folder
+- Custom app bar widget
+
+### Changed
+- Replaced generic app bar with custom app bar widget
+- Replaced hard coded colors with custom app theme colors
+
+
 ## [1.0.3] - 27-11-2022
 
 ### Added

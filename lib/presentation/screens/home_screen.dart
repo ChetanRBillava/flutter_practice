@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/core/themes/app_theme.dart';
 import 'package:flutter_practice/presentation/utils/app_texts.dart';
+
+import '../widgets/app_bar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
@@ -43,11 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
     // than having to individually change instances of widgets.
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          // Here we take the value from the MyHomePage object that was created by
-          // the App.build method, and use it to set our appbar title.
-          title: AppTexts(textString: widget.title,),
-        ),
+        backgroundColor: AppTheme.backgroundColor,
+        appBar: AppBarWidget(title: 'Home', centerTitle: false,),
         body: Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
