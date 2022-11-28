@@ -1,4 +1,4 @@
-package com.crb.flutter_practice.flutter_practice
+package com.crb.flutter_practice
 
 import io.flutter.embedding.android.FlutterActivity
 
