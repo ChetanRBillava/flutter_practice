@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_practice/logic/cubit/home_screen_cubit.dart';
 import 'package:flutter_practice/presentation/router/app_router.dart';
 import 'package:flutter_practice/presentation/screens/home_screen.dart';
 import 'package:sizer/sizer.dart';
@@ -15,14 +17,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Sizer(builder: (context, constraints, orientation) {
-      return const MaterialApp(
-        title: Strings.appTitle,
-        debugShowCheckedModeBanner: false,
-        initialRoute: AppRouter.splash,
-        onGenerateRoute: AppRouter.onGenerateRoute,
-      );
-    });
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => HomeScreenCubit(),
+        ),
+      ],
+      child: Sizer(builder: (context, constraints, orientation) {
+        return const MaterialApp(
+          title: Strings.appTitle,
+          debugShowCheckedModeBanner: false,
+          initialRoute: AppRouter.splash,
+          onGenerateRoute: AppRouter.onGenerateRoute,
+        );
+      }),
+    );
   }
 }
 

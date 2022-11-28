@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/core/themes/app_theme.dart';
 import 'package:flutter_practice/presentation/utils/app_texts.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../logic/cubit/home_screen_cubit.dart';
 import '../utils/custom_print.dart';
 import '../widgets/app_bar_widget.dart';
+import '../widgets/button_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -36,46 +30,61 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppTheme.backgroundColor,
-        appBar: AppBarWidget(title: 'Home', centerTitle: false,),
-        body: Center(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
-          child: Column(
-            // Column is also a layout widget. It takes a list of children and
-            // arranges them vertically. By default, it sizes itself to fit its
-            // children horizontally, and tries to be as tall as its parent.
-            //
-            // Invoke "debug painting" (press "p" in the console, choose the
-            // "Toggle Debug Paint" action from the Flutter Inspector in Android
-            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-            // to see the wireframe for each widget.
-            //
-            // Column has various properties to control how it sizes itself and
-            // how it positions its children. Here we use mainAxisAlignment to
-            // center the children vertically; the main axis here is the vertical
-            // axis because Columns are vertical (the cross axis would be
-            // horizontal).
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const AppTexts(textString: 'You have pushed the button this many times:',),
-              AppTexts(textString: '$_counter',textFontSize: 25.sp,),
+        appBar: AppBarWidget(title: 'Home', centerTitle: false, automaticallyImplyLeading:false),
+        body: SizedBox(
+          width: 100.w,
+          height: 100.h,
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const AppTexts(
+                      textString: 'You have pushed the button this many times:',),
+                    BlocBuilder<HomeScreenCubit, HomeScreenState>(
+                      builder: (context, state) {
+                        if(state is HomeScreenIncremented){
+                          return AppTexts(
+                            textString: state.value.toString(), textFontSize: 25.sp,
+                          );
+                        }
+                        else{
+                          return AppTexts(
+                            textString: '0', textFontSize: 25.sp,
+                          );
+                        }
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 2.h),
+                  child: ButtonWidget(
+                    //buttonTextColor: AppTheme.textColor_2,
+                    hasIcon: true,
+                    iconData: Icons.add,
+                    iconColor: AppTheme.textColor_2,
+                    buttonColor: AppTheme.buttonBackgroundColor,
+                    buttonSize: 60.w,
+                    borderRadius: 3.w,
+                    fontWeight: FontWeight.bold,
+                    onTapEvent: (){
+                      BlocProvider.of<HomeScreenCubit>(context).incrementer();
+                    },
+                  ),
+                ),
+              ),
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _incrementCounter,
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
-        ), // This trailing comma makes auto-formatting nicer for build methods.
       ),
     );
   }

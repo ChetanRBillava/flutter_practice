@@ -21,4 +21,7 @@ class AppTheme {
   static Color textColor_1 = const Color(0xff000000);
   static Color textColor_2 = const Color(0xffffffff);
   static Color textCaptionColor = const Color(0xff616060);
+
+  ///button
+  static Color buttonBackgroundColor = Colors.blue;
 }

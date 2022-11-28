@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] - dd-mm-yyyy
 Here we write the updates of future releases.
+
 1.0.xx belongs to Architecture support
 
 ### Added
@@ -20,6 +21,20 @@ Here we write the updates of future releases.
 ### Fixed
 
 ### Security
+
+
+## [1.0.7] - 28-11-2022
+
+### Added
+- Button widget
+- Logics folder
+- Cubits folder
+- Cubit set for home screen logic
+- Color styles for button in "App theme" file
+
+### Changed
+- Replaced the floating button in "Home Screen" with custom button widget
+- Replaced internal function logic of home screen with cubit functions
 
 
 ## [1.0.6] - 27-11-2022
