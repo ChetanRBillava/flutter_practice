@@ -16,6 +16,7 @@ class AppTheme {
   static Color successColor = Colors.green;
   static Color dangerColor = Colors.red;
   static Color infoColor = Colors.blue;
+  static Color warningColor = Colors.amber;
 
   ///texts
   static Color textColor_1 = const Color(0xff000000);

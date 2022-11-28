@@ -6,6 +6,7 @@ import 'package:flutter_practice/presentation/screens/home_screen.dart';
 import 'package:sizer/sizer.dart';
 
 import 'core/constants/strings.dart';
+import 'logic/bloc/calculator_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => HomeScreenCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CalculatorBloc(),
         ),
       ],
       child: Sizer(builder: (context, constraints, orientation) {

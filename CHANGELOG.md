@@ -23,6 +23,19 @@ Here we write the updates of future releases.
 ### Security
 
 
+## [1.0.8] - 28-11-2022
+
+### Added
+- Calculator screen which includes basic calculator operations
+- Integrated bloc sets for the same
+- Sidebar / Drawer widget
+- Actions parameter in app bar widget
+
+### Changed
+- Integrated an option to open the sidebar / drawer in screens
+- Splash property of Inkwell in custom button widget by wrapping the container with "Ink" widget
+
+
 ## [1.0.7] - 28-11-2022
 
 ### Added

@@ -9,6 +9,7 @@ class AppBarWidget extends StatefulWidget with PreferredSizeWidget{
     required this.title,
 
     this.automaticallyImplyLeading,
+    this.actions,
     this.centerTitle,
   }) : super(key: key);
   ///required
@@ -16,6 +17,7 @@ class AppBarWidget extends StatefulWidget with PreferredSizeWidget{
 
   ///optional
   bool? automaticallyImplyLeading, centerTitle;
+  List<Widget>? actions;
   @override
   State<AppBarWidget> createState() => _AppBarWidgetState();
 
@@ -31,6 +33,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
       backgroundColor: AppTheme.appbarBackgroundColor,
       automaticallyImplyLeading: widget.automaticallyImplyLeading??true,
       centerTitle: widget.centerTitle??true,
+      actions: widget.actions,
       title: AppTexts(
         textString: widget.title,
         fontWeight: FontWeight.bold,

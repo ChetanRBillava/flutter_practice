@@ -2,7 +2,7 @@ name: flutter_practice
 description: A new Flutter project for practice.
 
 publish_to: 'none'
-version: 1.0.7+8
+version: 1.0.8+9
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   flutter_bloc:
   cupertino_icons: ^1.0.2
+  math_expressions:
   sizer:
 
 dev_dependencies:
