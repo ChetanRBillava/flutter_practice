@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 
 class AppTheme {
   ///main
@@ -16,6 +14,7 @@ class AppTheme {
   static Color successColor = Colors.green;
   static Color dangerColor = Colors.red;
   static Color infoColor = Colors.blue;
+  static Color warningColor = Colors.amber;
 
   ///texts
   static Color textColor_1 = const Color(0xff000000);

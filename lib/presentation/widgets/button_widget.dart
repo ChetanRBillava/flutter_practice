@@ -45,8 +45,7 @@ class _ButtonWidgetState extends State<ButtonWidget> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: widget.onTapEvent,
-      splashColor: AppTheme.formFieldBackgroundColor,
-      child: Container(
+      child: Ink(
         decoration: BoxDecoration(
             color: widget.buttonColor,
             border: Border.all(color: widget.borderColor??widget.buttonColor),
@@ -54,21 +53,23 @@ class _ButtonWidgetState extends State<ButtonWidget> {
                 Radius.circular(widget.borderRadius??0.w)
             )
         ),
-        width: widget.buttonSize,
-        child: Padding(
-          padding: EdgeInsets.all(1.h),
-          child: widget.hasIcon==true?
-              Icon(
-                widget.iconData,
-                size: widget.iconSize,
-                color: widget.iconColor,
-              ) :
-          AppTexts(
-            textString: widget.buttonText as String,
-            textFontSize: widget.buttonTextSize??12.sp,
-            fontWeight: widget.fontWeight??FontWeight.normal,
-            textColor: widget.buttonTextColor,
-            textAlign: widget.textAlign??TextAlign.center,
+        child: Container(
+          width: widget.buttonSize,
+          child: Padding(
+            padding: EdgeInsets.all(1.h),
+            child: widget.hasIcon==true?
+                Icon(
+                  widget.iconData,
+                  size: widget.iconSize,
+                  color: widget.iconColor,
+                ) :
+            AppTexts(
+              textString: widget.buttonText as String,
+              textFontSize: widget.buttonTextSize??12.sp,
+              fontWeight: widget.fontWeight??FontWeight.normal,
+              textColor: widget.buttonTextColor,
+              textAlign: widget.textAlign??TextAlign.center,
+            ),
           ),
         ),
       ),
