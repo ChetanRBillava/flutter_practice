@@ -51,6 +51,7 @@ class _SideDrawerState extends State<SideDrawer> {
                     textColor: AppTheme.textColor_2,
                   ),
                   onTap: () {
+                    Navigator.pop(context);
                     Navigator.of(context).pushNamed(AppRouter.home);
                   },
                 ),
@@ -65,7 +66,23 @@ class _SideDrawerState extends State<SideDrawer> {
                     textColor: AppTheme.textColor_2,
                   ),
                   onTap: () {
+                    Navigator.pop(context);
                     Navigator.of(context).pushNamed(AppRouter.calc);
+                  },
+                ),
+                ///Random Jokes
+                ListTile(
+                  leading: Icon(Icons.mood_sharp, color: AppTheme.textColor_2),
+                  title:
+                  AppTexts(
+                    textString: 'Random Jokes',
+                    textFontSize: 12.0.sp,
+                    fontWeight: FontWeight.bold,
+                    textColor: AppTheme.textColor_2,
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.of(context).pushNamed(AppRouter.randomJokes);
                   },
                 ),
 

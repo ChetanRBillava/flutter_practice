@@ -23,6 +23,22 @@ Here we write the updates of future releases.
 ### Security
 
 
+## [1.0.9] - 30-11-2022
+
+### Added
+- Data folder for API execution
+- http, models and repositories folders inside "Data" folder
+- Random jokes screen
+- Cubit set for random jokes
+- HTTP plugin for api calls
+- URL of jokes api
+- Model to store the data
+- Repository to execute the api
+
+### Changed
+- apk name in build type releases of "android/app/build.gradle"
+
+
 ## [1.0.8] - 28-11-2022
 
 ### Added
