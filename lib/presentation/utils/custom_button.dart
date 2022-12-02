@@ -1,11 +1,13 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/themes/app_theme.dart';
-import '../utils/app_texts.dart';
+import 'app_texts.dart';
 
-class ButtonWidget extends StatefulWidget {
-  ButtonWidget({
+class CustomButton extends StatefulWidget {
+  CustomButton({
     Key? key,
     required this.buttonColor,
 
@@ -18,7 +20,6 @@ class ButtonWidget extends StatefulWidget {
     this.borderColor,
     this.fontWeight,
     this.textAlign,
-    this.hasIcon,
     this.iconSize,
     this.iconColor,
     this.iconData,
@@ -34,13 +35,12 @@ class ButtonWidget extends StatefulWidget {
   Color? borderColor, buttonTextColor, iconColor;
   FontWeight? fontWeight;
   TextAlign? textAlign;
-  bool? hasIcon;
   IconData? iconData;
   @override
-  State<ButtonWidget> createState() => _ButtonWidgetState();
+  State<CustomButton> createState() => _CustomButtonState();
 }
 
-class _ButtonWidgetState extends State<ButtonWidget> {
+class _CustomButtonState extends State<CustomButton> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -57,7 +57,7 @@ class _ButtonWidgetState extends State<ButtonWidget> {
           width: widget.buttonSize,
           child: Padding(
             padding: EdgeInsets.all(1.h),
-            child: widget.hasIcon==true?
+            child: widget.iconData!=null?
                 Icon(
                   widget.iconData,
                   size: widget.iconSize,

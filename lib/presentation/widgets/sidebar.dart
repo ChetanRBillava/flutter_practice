@@ -85,6 +85,21 @@ class _SideDrawerState extends State<SideDrawer> {
                     Navigator.of(context).pushNamed(AppRouter.randomJokes);
                   },
                 ),
+                ///My form
+                ListTile(
+                  leading: Icon(Icons.list_alt, color: AppTheme.textColor_2),
+                  title:
+                  AppTexts(
+                    textString: 'My form',
+                    textFontSize: 12.0.sp,
+                    fontWeight: FontWeight.bold,
+                    textColor: AppTheme.textColor_2,
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.of(context).pushNamed(AppRouter.myForm);
+                  },
+                ),
 
               ],
             ),

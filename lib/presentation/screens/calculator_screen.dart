@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/core/themes/app_theme.dart';
 import 'package:flutter_practice/logic/bloc/calculator_bloc.dart';
 import 'package:flutter_practice/presentation/utils/app_texts.dart';
-import 'package:flutter_practice/presentation/widgets/button_widget.dart';
+import 'package:flutter_practice/presentation/utils/custom_button.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:sizer/sizer.dart';
 
@@ -92,7 +92,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///clear
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.dangerColor,
                           buttonText: 'C',
                           buttonTextSize: 20.sp,
@@ -108,7 +108,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///percentage
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.warningColor,
                           buttonText: '%',
                           buttonTextSize: 20.sp,
@@ -124,9 +124,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///backspace
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.warningColor,
-                          hasIcon: true,
                           iconData: Icons.backspace,
                           iconSize: 25.sp,
                           iconColor: AppTheme.textColor_2,
@@ -140,7 +139,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///divide
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.warningColor,
                           buttonText: '/',
                           buttonTextSize: 20.sp,
@@ -161,7 +160,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///7
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.infoColor,
                           buttonText: '7',
                           buttonTextSize: 20.sp,
@@ -177,7 +176,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///8
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.infoColor,
                           buttonText: '8',
                           buttonTextSize: 20.sp,
@@ -193,7 +192,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///9
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.infoColor,
                           buttonText: '9',
                           buttonTextSize: 20.sp,
@@ -209,7 +208,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///multiply
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.warningColor,
                           buttonText: 'X',
                           buttonTextSize: 20.sp,
@@ -230,7 +229,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///4
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.infoColor,
                           buttonText: '4',
                           buttonTextSize: 20.sp,
@@ -246,7 +245,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///5
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.infoColor,
                           buttonText: '5',
                           buttonTextSize: 20.sp,
@@ -262,7 +261,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///6
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.infoColor,
                           buttonText: '6',
                           buttonTextSize: 20.sp,
@@ -278,7 +277,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///subtract
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.warningColor,
                           buttonText: '-',
                           buttonTextSize: 20.sp,
@@ -299,7 +298,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///1
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.infoColor,
                           buttonText: '1',
                           buttonTextSize: 20.sp,
@@ -315,7 +314,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///2
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.infoColor,
                           buttonText: '2',
                           buttonTextSize: 20.sp,
@@ -331,7 +330,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///3
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.infoColor,
                           buttonText: '3',
                           buttonTextSize: 20.sp,
@@ -347,7 +346,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///add
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.warningColor,
                           buttonText: '+',
                           buttonTextSize: 20.sp,
@@ -368,7 +367,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///00
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.infoColor,
                           buttonText: '00',
                           buttonTextSize: 20.sp,
@@ -384,7 +383,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///0
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.infoColor,
                           buttonText: '0',
                           buttonTextSize: 20.sp,
@@ -400,7 +399,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///decimal
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.infoColor,
                           buttonText: '.',
                           buttonTextSize: 20.sp,
@@ -416,7 +415,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       ///equals
                       Padding(
                         padding: EdgeInsets.all(1.h),
-                        child: ButtonWidget(
+                        child: CustomButton(
                           buttonColor: AppTheme.warningColor,
                           buttonText: '=',
                           buttonTextSize: 20.sp,

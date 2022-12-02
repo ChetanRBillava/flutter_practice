@@ -6,7 +6,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../core/themes/app_theme.dart';
 import '../widgets/app_bar_widget.dart';
-import '../widgets/button_widget.dart';
+import '../utils/custom_button.dart';
 import '../widgets/sidebar.dart';
 
 class RandomJokesScreen extends StatefulWidget {

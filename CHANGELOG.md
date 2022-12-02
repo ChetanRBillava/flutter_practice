@@ -7,10 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased] - dd-mm-yyyy
 Here we write the updates of future releases.
 
-1.0.xx belongs to Architecture support
+1.1.xx belongs to Advance topics
 
 ### Added
-- Folders included in the architecture format
+- Advance topics such as testing, push notifications, languages etc.,
 
 ### Changed
 
@@ -21,6 +21,19 @@ Here we write the updates of future releases.
 ### Fixed
 
 ### Security
+
+
+## [1.1.0] - 30-11-2022
+
+### Added
+- Custom app icon files
+- Custom form field widget
+- Custom dialog box widget
+- Screen to take form input
+- Cubit sets to manage the operations
+
+### Changed
+- Renamed custom button class and filename
 
 
 ## [1.0.9] - 30-11-2022

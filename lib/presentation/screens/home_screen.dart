@@ -9,7 +9,7 @@ import 'package:sizer/sizer.dart';
 import '../../logic/cubit/home_screen_cubit.dart';
 import '../utils/custom_print.dart';
 import '../widgets/app_bar_widget.dart';
-import '../widgets/button_widget.dart';
+import '../utils/custom_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
@@ -63,9 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: Alignment.bottomCenter,
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 2.h),
-                      child: ButtonWidget(
+                      child: CustomButton(
                         //buttonTextColor: AppTheme.textColor_2,
-                        hasIcon: true,
                         iconData: Icons.add,
                         iconColor: AppTheme.textColor_2,
                         buttonColor: AppTheme.buttonBackgroundColor,

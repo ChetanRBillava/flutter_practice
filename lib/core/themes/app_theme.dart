@@ -4,8 +4,8 @@ class AppTheme {
   ///main
   static Color backgroundColor = const Color(0xffffffff);
   static Color formFieldBackgroundColor = const Color(0xffffffff);
-  static Color enabledFormFieldBorderColor = const Color(0xff616060);
-  static Color focusedFormFieldBorderColor = const Color(0xff000000);
+  static Color enabledFormFieldBorderColor = const Color(0xff000000);
+  static Color focusedFormFieldBorderColor = const Color(0xffffffff);
   static Color appbarBackgroundColor = Colors.blue;
   static Color primaryColor = Colors.blue;
   static Color secondaryColor = const Color(0xffffffff);
@@ -23,4 +23,5 @@ class AppTheme {
 
   ///button
   static Color buttonBackgroundColor = Colors.blue;
+  static Color buttonBackgroundColor2 = const Color(0xffffffff);
 }

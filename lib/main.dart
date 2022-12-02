@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/logic/cubit/home_screen_cubit.dart';
+import 'package:flutter_practice/logic/cubit/my_form_cubit.dart';
 import 'package:flutter_practice/logic/cubit/random_jokes__cubit.dart';
 import 'package:flutter_practice/presentation/router/app_router.dart';
 import 'package:flutter_practice/presentation/screens/home_screen.dart';
@@ -28,6 +29,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => RandomJokesCubit(repository: randomJokesRepository),
+        ),
+        BlocProvider(
+          create: (context) => MyFormCubit(),
         ),
         BlocProvider(
           create: (context) => CalculatorBloc(),
