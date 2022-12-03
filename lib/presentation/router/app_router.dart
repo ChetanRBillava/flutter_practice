@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/presentation/screens/languages_screen.dart';
 import 'package:flutter_practice/presentation/screens/my_form_screen.dart';
 import 'package:flutter_practice/presentation/screens/random_jokes_screen.dart';
 import 'package:flutter_practice/presentation/screens/calculator_screen.dart';
@@ -9,7 +10,8 @@ import '../../core/exceptions/route_exception.dart';
 
 class AppRouter {
   static const String splash = '/',
-      home = 'home', calc = 'calc', randomJokes = 'randomJokes', myForm = 'myForm';
+      home = 'home', calc = 'calc', randomJokes = 'randomJokes', myForm = 'myForm',
+      lang = 'lang';
 
   const AppRouter._();
 
@@ -34,6 +36,10 @@ class AppRouter {
       case myForm:
         return MaterialPageRoute(
           builder: (_) => const MyFormScreen(),
+        );
+      case lang:
+        return MaterialPageRoute(
+          builder: (_) => const LanguagesScreen(),
         );
       default:
         throw const RouteException('Route not found!');

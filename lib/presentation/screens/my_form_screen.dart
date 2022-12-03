@@ -4,6 +4,7 @@ import 'package:flutter_practice/logic/cubit/my_form_cubit.dart';
 import 'package:flutter_practice/presentation/utils/custom_print.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../core/localisations/languages.dart';
 import '../../core/themes/app_theme.dart';
 import '../utils/app_texts.dart';
 import '../utils/custom_button.dart';
@@ -22,7 +23,7 @@ class MyFormScreen extends StatefulWidget {
 class _MyFormScreenState extends State<MyFormScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController(), pswdController = TextEditingController();
-  String gender='Male';
+  String? gender;
   bool chkbox = false, obscure = true;
   int exp = 0;
 
@@ -37,7 +38,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppTheme.backgroundColor,
-        appBar: AppBarWidget(title: 'My form', centerTitle: false, automaticallyImplyLeading:true),
+        appBar: AppBarWidget(title: Languages.of(context)?.myForm as String, centerTitle: false, automaticallyImplyLeading:true),
         drawer: const SideDrawer(),
         body: SingleChildScrollView(
           child: Column(
@@ -71,7 +72,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
                                   Padding(
                                     padding: EdgeInsets.only(top:2.h, bottom: 1.h, left: 1.w),
                                     child: AppTexts(
-                                      textString: 'Name',
+                                      textString: Languages.of(context)?.formNameLabel as String,
                                       textFontSize: 14.sp,
                                       textColor: AppTheme.textColor_2,
                                       textAlign: TextAlign.end,
@@ -88,11 +89,11 @@ class _MyFormScreenState extends State<MyFormScreen> {
                                       validator: (value) {
                                         if (value == null ||
                                             value.isEmpty) {
-                                          return 'This field cannot be empty';
+                                          return Languages.of(context)?.formFieldError as String;
                                         }
                                         return null;
                                       },
-                                      hintText: 'Name',
+                                      hintText: Languages.of(context)?.formNameHint as String,
                                     ),
                                   ),
                                 ],
@@ -106,7 +107,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
                                   Padding(
                                     padding: EdgeInsets.only(top:2.h, bottom: 1.h, left: 1.w),
                                     child: AppTexts(
-                                      textString: 'Gender',
+                                      textString: Languages.of(context)?.formGenderLabel as String,
                                       textFontSize: 14.sp,
                                       textColor: AppTheme.textColor_2,
                                       textAlign: TextAlign.end,
@@ -123,7 +124,10 @@ class _MyFormScreenState extends State<MyFormScreen> {
                                     child: DropdownButton<String>(
                                       hint: const Text('choose'),
                                       underline: const SizedBox(),
-                                      items: <String>['Male', 'Female'].map((String value) {
+                                      items: <String>[
+                                        Languages.of(context)?.formGenderMale as String,
+                                        Languages.of(context)?.formGenderFemale as String
+                                      ].map((String value) {
                                         return DropdownMenuItem<String>(
                                           value: value,
                                           child: AppTexts(
@@ -154,7 +158,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
                                   Padding(
                                     padding: EdgeInsets.only(top:2.h, bottom: 1.h, left: 1.w),
                                     child: AppTexts(
-                                      textString: 'Password',
+                                      textString: Languages.of(context)?.formPasswordLabel as String,
                                       textFontSize: 14.sp,
                                       textColor: AppTheme.textColor_2,
                                       textAlign: TextAlign.end,
@@ -171,14 +175,14 @@ class _MyFormScreenState extends State<MyFormScreen> {
                                       validator: (value) {
                                         if (value == null ||
                                             value.isEmpty) {
-                                          return 'This field cannot be empty';
+                                          return Languages.of(context)?.formFieldError as String;
                                         }
                                         else if(value.length < 8){
-                                          return 'Length should be atleast 8';
+                                          return Languages.of(context)?.formFieldError as String;
                                         }
                                         return null;
                                       },
-                                      hintText: 'Type your password',
+                                      hintText: Languages.of(context)?.formPasswordHint as String,
                                       obscureText: obscure,
                                       suffixIcon: GestureDetector(
                                         onTap: (){
@@ -204,7 +208,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
                                   Padding(
                                     padding: EdgeInsets.only(top:2.h, bottom: 1.h, left: 1.w),
                                     child: AppTexts(
-                                      textString: 'Share your experience',
+                                      textString: Languages.of(context)?.formExperienceLabel as String,
                                       textFontSize: 14.sp,
                                       textColor: AppTheme.textColor_2,
                                       textAlign: TextAlign.end,
@@ -221,10 +225,14 @@ class _MyFormScreenState extends State<MyFormScreen> {
                                           }
                                       ),
                                       AppTexts(
-                                        textString: 'First time user',
+                                        textString: Languages.of(context)?.formExperienceFirstTime as String,
                                         textColor: AppTheme.textColor_2,
                                         textAlign: TextAlign.start,
                                       ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
                                       Radio(
                                           value: 1,
                                           activeColor: AppTheme.textColor_2,
@@ -234,7 +242,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
                                           }
                                       ),
                                       AppTexts(
-                                        textString: 'Used this app before',
+                                        textString: Languages.of(context)?.formExperienceUsedBefore as String,
                                         textColor: AppTheme.textColor_2,
                                         textAlign: TextAlign.start,
                                       ),
@@ -265,7 +273,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
                                         },
                                       ),
                                       AppTexts(
-                                        textString: 'I have filled all the details',
+                                        textString: Languages.of(context)?.formCheckboxLabel as String,
                                         textColor: AppTheme.textColor_2,
                                         textAlign: TextAlign.start,
                                       ),
@@ -278,7 +286,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
                               Padding(
                                 padding: EdgeInsets.all(4.w),
                                 child: CustomButton(
-                                  buttonText: 'DONE',
+                                  buttonText: Languages.of(context)?.formDone as String,
                                   buttonColor: AppTheme.buttonBackgroundColor2,
                                   buttonSize: 90.w,
                                   borderRadius: 3.w,
@@ -287,19 +295,25 @@ class _MyFormScreenState extends State<MyFormScreen> {
                                     customPrint.myCustomPrint(formKey.currentState?.validate());
                                     if(formKey.currentState?.validate() == true){
                                       if(chkbox){
-                                        BlocProvider.of<MyFormCubit>(context).setValues(
-                                            context,
-                                          nameController.text,
-                                            gender,
-                                            pswdController.text,
-                                          exp
-                                        );
+                                        if(gender!=null){
+                                          BlocProvider.of<MyFormCubit>(context).setValues(
+                                              context, nameController.text, gender, pswdController.text, exp
+                                          );
+                                        }
+                                        else{
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                              SnackBar(
+                                                duration: const Duration(seconds: 2),
+                                                content: Text(Languages.of(context)?.formFieldCheckboxError as String),
+                                              )
+                                          );
+                                        }
                                       }
                                       else{
                                         ScaffoldMessenger.of(context).showSnackBar(
-                                            const SnackBar(
-                                              duration: Duration(seconds: 2),
-                                              content: Text('Please check the checkbox'),
+                                            SnackBar(
+                                              duration: const Duration(seconds: 2),
+                                              content: Text(Languages.of(context)?.formFieldCheckboxError as String),
                                             )
                                         );
                                       }

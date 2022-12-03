@@ -23,7 +23,21 @@ Here we write the updates of future releases.
 ### Security
 
 
-## [1.1.0] - 30-11-2022
+## [1.1.1] - 3-12-2022
+
+### Added
+- Assets folder for storing assets
+- Images folder inside assets folder to store image
+- App logo in splash screen
+- Localisations folder to handle multiple languages
+- Languages screen to handle language change
+- "flutter_localizations" plugin to handle multiple languages
+
+### Changed
+- Replaced all the static strings in screens, widgets and cubits with localised multi lingual keywords
+
+
+## [1.1.0] - 2-12-2022
 
 ### Added
 - Custom app icon files

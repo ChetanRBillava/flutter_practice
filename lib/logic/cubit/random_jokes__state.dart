@@ -11,9 +11,8 @@ abstract class RandomJokesState {
 }
 
 class RandomJokesInitial extends RandomJokesState {
-  String message;
 
-  RandomJokesInitial({required this.message, required super.isLoading});
+  RandomJokesInitial({required super.isLoading});
 }
 
 class RandomJokesLoaded extends RandomJokesState{

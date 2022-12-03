@@ -7,6 +7,7 @@ import 'package:flutter_practice/presentation/utils/custom_button.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../core/localisations/languages.dart';
 import '../widgets/app_bar_widget.dart';
 import '../widgets/sidebar.dart';
 
@@ -23,7 +24,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppTheme.backgroundColor,
-        appBar: AppBarWidget(title: 'Calculator', centerTitle: false, automaticallyImplyLeading:true,
+        appBar: AppBarWidget(title: Languages.of(context)?.calculator as String, centerTitle: false, automaticallyImplyLeading:true,
             actions: [
               Padding(
                 padding: EdgeInsets.only(right: 2.w),

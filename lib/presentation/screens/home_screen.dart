@@ -6,6 +6,7 @@ import 'package:flutter_practice/presentation/utils/app_texts.dart';
 import 'package:flutter_practice/presentation/widgets/sidebar.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../core/localisations/languages.dart';
 import '../../logic/cubit/home_screen_cubit.dart';
 import '../utils/custom_print.dart';
 import '../widgets/app_bar_widget.dart';
@@ -28,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SafeArea(
           child: Scaffold(
             backgroundColor: AppTheme.backgroundColor,
-            appBar: AppBarWidget(title: 'Home', centerTitle: false, automaticallyImplyLeading:true),
+            appBar: AppBarWidget(title: Languages.of(context)?.home as String, centerTitle: false, automaticallyImplyLeading:true),
             drawer: const SideDrawer(),
             body: SizedBox(
               width: 100.w,
@@ -40,8 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const AppTexts(
-                          textString: 'You have pushed the button this many times:',),
+                        AppTexts(
+                          textString: Languages.of(context)?.homeLabel as String,),
                         BlocBuilder<HomeScreenCubit, HomeScreenState>(
                           builder: (context, state) {
                             if(state is HomeScreenIncremented){
