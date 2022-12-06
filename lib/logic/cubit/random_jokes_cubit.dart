@@ -7,15 +7,15 @@ import 'package:sizer/sizer.dart';
 import '../../data/models/random_jokes_model.dart';
 import '../../data/repositories/random_jokes_repository.dart';
 
-part 'random_jokes__state.dart';
+part 'random_jokes_state.dart';
 
 class RandomJokesCubit extends Cubit<RandomJokesState> {
   final RandomJokesRepository repository;
-  RandomJokesCubit({required this.repository}) : super(RandomJokesInitial(message: 'Click on the button to generate a new joke!', isLoading: false));
+  RandomJokesCubit({required this.repository}) : super(RandomJokesInitial(isLoading: false));
 
   void fetchJokes(context){
     if(state is RandomJokesInitial){
-      emit(RandomJokesInitial(message: (state as RandomJokesInitial).message, isLoading: true));
+      emit(RandomJokesInitial(isLoading: true));
     }
     else{
       emit(RandomJokesLoaded(isLoading: true, randomJokesList: (state as RandomJokesLoaded).randomJokesList));

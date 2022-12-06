@@ -1,12 +1,24 @@
 part of 'home_screen_cubit.dart';
 
-@immutable
-abstract class HomeScreenState {}
+class HomeScreenState extends Equatable{
 
-class HomeScreenInitial extends HomeScreenState {}
+  @override
+  List<Object> get props => [];
+
+}
+
+class HomeScreenInitial extends HomeScreenState {
+
+  @override
+  List<Object> get props => [];
+
+}
 
 class HomeScreenIncremented extends HomeScreenState {
   final int value;
 
   HomeScreenIncremented({required this.value});
+
+  @override
+  List<Object> get props => [value];
 }

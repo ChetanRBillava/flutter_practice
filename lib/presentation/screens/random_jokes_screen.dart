@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_practice/logic/cubit/random_jokes__cubit.dart';
 import 'package:flutter_practice/presentation/utils/app_texts.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../core/localisations/languages.dart';
 import '../../core/themes/app_theme.dart';
+import '../../logic/cubit/random_jokes_cubit.dart';
 import '../widgets/app_bar_widget.dart';
 import '../utils/custom_button.dart';
 import '../widgets/sidebar.dart';
@@ -22,7 +23,7 @@ class _RandomJokesScreenState extends State<RandomJokesScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppTheme.backgroundColor,
-        appBar: AppBarWidget(title: 'Random Jokes',
+        appBar: AppBarWidget(title: Languages.of(context)?.jokes as String,
             centerTitle: false,
             automaticallyImplyLeading: true,
             actions: [
@@ -54,7 +55,7 @@ class _RandomJokesScreenState extends State<RandomJokesScreen> {
                 builder: (context, state) {
                   if(state is RandomJokesInitial){
                     return AppTexts(
-                      textString: state.message,
+                      textString: Languages.of(context)?.jokeMessage as String,
                       textFontSize: 20.sp,
                       textAlign: TextAlign.center,
                     );

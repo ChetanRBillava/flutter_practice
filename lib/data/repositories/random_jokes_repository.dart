@@ -40,17 +40,14 @@ class RandomJokesRepository{
         return [];
       }
     }  on SocketException catch (e) {
-      print('Socket Exception');
+      customPrint.myCustomPrint('Socket Exception');
       rethrow;
-      return [];
     } on HttpException catch (e) {
-      print('Http Exception');
+      customPrint.myCustomPrint('Http Exception');
       rethrow;
-      return [];
     } on FormatException catch (e) {
-      print('Format Exception');
+      customPrint.myCustomPrint('Format Exception');
       rethrow;
-      return [];
     }
   }
 }

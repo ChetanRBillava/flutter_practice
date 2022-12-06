@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:meta/meta.dart';
@@ -53,8 +54,6 @@ class CalculatorBloc extends Bloc<CalculatorEvent, CalculatorState> {
             newString = event.value;
           }
         }
-        customPrint.myCustomPrint(newString);
-
         emit(CalculatorTyping(value: state.value, valueString: newString));
       }
       else if(event is BackspaceEvent){
@@ -67,9 +66,6 @@ class CalculatorBloc extends Bloc<CalculatorEvent, CalculatorState> {
           else{
             newString='0';
           }
-          customPrint.myCustomPrint(newString);
-
-
           emit(CalculatorTyping(value: state.value, valueString: newString));
         }
         else if(state is CalculatorResult){
@@ -81,21 +77,24 @@ class CalculatorBloc extends Bloc<CalculatorEvent, CalculatorState> {
           else{
             newString='0';
           }
-          customPrint.myCustomPrint(newString);
+          emit(CalculatorTyping(value: state.value, valueString: newString));
+        }
+        else if(state is CalculatorInvalidFormat){
+          String newString = (state as CalculatorInvalidFormat).value;
 
-
+          if(newString.length>1){
+            newString = newString.substring(0, newString.length-1);
+          }
+          else{
+            newString='0';
+          }
           emit(CalculatorTyping(value: state.value, valueString: newString));
         }
       }
       else if(event is GetResultEvent){
         String expr = (state as CalculatorTyping).valueString;
         if(expr[0]=='%' || expr[expr.length-1]=='%'){
-          ScaffoldMessenger.of(event.context).showSnackBar(
-              const SnackBar(
-                duration: Duration(seconds: 3),
-                content: Text('Invalid format, please try different expression.'),
-              )
-          );
+          emit(CalculatorInvalidFormat(value: (state as CalculatorTyping).valueString));
         }
         else{
           if(state is CalculatorTyping){
@@ -106,17 +105,11 @@ class CalculatorBloc extends Bloc<CalculatorEvent, CalculatorState> {
               Expression exp = p.parse(expr);
               String result = exp.evaluate(EvaluationType.REAL, cm).toString();
 
-              customPrint.myCustomPrint(result);
               emit(CalculatorResult(value: result));
             } on Exception catch (_, e) {
               customPrint.myCustomPrint('Exception caught');
               customPrint.myCustomPrint(_);
-              ScaffoldMessenger.of(event.context).showSnackBar(
-                  const SnackBar(
-                    duration: Duration(seconds: 3),
-                    content: Text('Invalid format, please try different expression.'),
-                  )
-              );
+              emit(CalculatorInvalidFormat(value: (state as CalculatorTyping).valueString));
             }
           }
         }

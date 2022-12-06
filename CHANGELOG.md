@@ -23,7 +23,52 @@ Here we write the updates of future releases.
 ### Security
 
 
-## [1.1.0] - 30-11-2022
+## [1.1.3] - 6-12-2022
+
+### Added
+- Bloc folder in test/logic folder
+- Bloc test file for bloc unit test
+- Invalid format state in Calculator states
+- Build listener inside calculator screen to display invalid format snackbar
+
+### Changed
+- Bloc states by extending Equatable
+- Backspace event by adding Invalid format state condition
+
+### Removed
+- Build context parameter for Get result event
+
+
+## [1.1.2] - 6-12-2022
+
+### Added
+- logic/cubit folder in test folder
+- Test file for Home screen cubit and My form cubit
+- bloc test plugin for unit test
+- Equatable plugin for cubit states
+
+### Changed
+- Cubit states by extending Equatable class
+- Incrementer function in Home screen cubit by adding parameter in the function call
+- All the functions in My form cubit to Future<bool> return type from void
+- Appropriate logics in My form screen
+
+
+## [1.1.1] - 3-12-2022
+
+### Added
+- Assets folder for storing assets
+- Images folder inside assets folder to store image
+- App logo in splash screen
+- Localisations folder to handle multiple languages
+- Languages screen to handle language change
+- "flutter_localizations" plugin to handle multiple languages
+
+### Changed
+- Replaced all the static strings in screens, widgets and cubits with localised multi lingual keywords
+
+
+## [1.1.0] - 2-12-2022
 
 ### Added
 - Custom app icon files
