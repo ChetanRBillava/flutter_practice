@@ -16,13 +16,13 @@ class InternetCubit extends Cubit<InternetState> {
     connectivityStreamSubscription =
         connectivity.onConnectivityChanged.listen((connectivityResult) {
           if(connectivityResult == ConnectivityResult.wifi){
-            emitInternetConnected(ConnectionType.wifi, 'WiFi connected', Icons.wifi);
+            emitInternetConnected(ConnectionType.wifi, 'wifi', Icons.wifi);
           }
           else if(connectivityResult == ConnectivityResult.mobile){
-            emitInternetConnected(ConnectionType.mobile, 'Mobile internet', Icons.signal_cellular_alt);
+            emitInternetConnected(ConnectionType.mobile, 'mobile', Icons.signal_cellular_alt);
           }
           else if(connectivityResult == ConnectivityResult.none){
-            emitInternetDisconnected('No internet', Icons.signal_wifi_bad);
+            emitInternetDisconnected('none', Icons.signal_wifi_bad);
           }
         });
   }

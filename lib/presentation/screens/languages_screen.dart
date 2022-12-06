@@ -89,7 +89,20 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppTheme.backgroundColor,
-        appBar: AppBarWidget(title: Languages.of(context)?.language as String, centerTitle: false, automaticallyImplyLeading:true),
+        appBar: AppBarWidget(title: Languages.of(context)?.language as String, centerTitle: false, automaticallyImplyLeading:true,
+            actions: [
+              Padding(
+                padding: EdgeInsets.only(right: 2.w),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(
+                      Icons.arrow_back
+                  ),
+                ),
+              )
+            ]),
         drawer: const SideDrawer(),
         floatingActionButton: FloatingActionButton(
             child: const Icon(Icons.translate),

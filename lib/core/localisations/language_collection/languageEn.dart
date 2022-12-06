@@ -25,6 +25,15 @@ class LanguageEn extends Languages {
   @override
   String get homeLabel => "You have pushed the button this many times:";
 
+  @override
+  String get wifiConnected => "WiFi connected";
+
+  @override
+  String get mobileNetworkConnected => "Mobile network connected";
+
+  @override
+  String get noInternet => "No internet connection";
+
   ///joke
   @override
   String get jokeMessage => "Click on the button to generate a new joke!";

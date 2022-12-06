@@ -11,6 +11,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'core/constants/strings.dart';
 import 'core/localisations/appLocalizationsDelegate.dart';
 import 'core/localisations/languages.dart';
+import 'core/localisations/locale_constant.dart';
 import 'data/repositories/random_jokes_repository.dart';
 import 'logic/bloc/calculator_bloc.dart';
 import 'logic/cubit/internet_cubit.dart';
@@ -39,6 +40,16 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _locale = locale;
     });
+  }
+
+  @override
+  void didChangeDependencies() async {
+    getLocale().then((locale) {
+      setState(() {
+        _locale = locale;
+      });
+    });
+    super.didChangeDependencies();
   }
 
   // This widget is the root of your application.

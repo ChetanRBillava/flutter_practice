@@ -55,7 +55,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: BlocBuilder<InternetCubit, InternetState>(
                       builder: (context, state) {
                         return AppTexts(
-                          textString: state.connectionState, textFontSize: 25.sp,
+                          textString: (state is InternetConnected && state.connectionState=='wifi')?
+                          Languages.of(context)?.wifiConnected as String:
+                          (state is InternetConnected && state.connectionState=='mobile')?
+                          Languages.of(context)?.mobileNetworkConnected as String:
+                          Languages.of(context)?.noInternet as String,
+                          textFontSize: 16.sp,
                         );
                       },
                     ),
