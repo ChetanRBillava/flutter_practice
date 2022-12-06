@@ -23,6 +23,24 @@ Here we write the updates of future releases.
 ### Security
 
 
+## [1.1.4] - 6-12-2022
+
+### Added
+- Enums file to store internet connection enums
+- "Connectivity plus" plugin to check the connection state of the device
+- Internet cubit sets
+- Error states in "Random jokes state"
+- Internet connection message in home screen
+- Appropriate return statements on api error/failure
+
+### Changed
+- Return structure of "Random jokes repository"
+- Api calling method to integrate with the internet connection state in "Random jokes screen"
+
+### Removed
+- Build context parameter for fetch jokes function
+
+
 ## [1.1.3] - 6-12-2022
 
 ### Added

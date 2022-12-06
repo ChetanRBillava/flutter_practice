@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/core/themes/app_theme.dart';
+import 'package:flutter_practice/logic/cubit/internet_cubit.dart';
 import 'package:flutter_practice/presentation/utils/app_texts.dart';
 import 'package:flutter_practice/presentation/widgets/sidebar.dart';
 import 'package:sizer/sizer.dart';
@@ -29,13 +30,36 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SafeArea(
           child: Scaffold(
             backgroundColor: AppTheme.backgroundColor,
-            appBar: AppBarWidget(title: Languages.of(context)?.home as String, centerTitle: false, automaticallyImplyLeading:true),
+            appBar: AppBarWidget(title: Languages.of(context)?.home as String, centerTitle: false, automaticallyImplyLeading:true,
+                actions: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 2.w),
+                    child: BlocBuilder<InternetCubit, InternetState>(
+                      builder: (context, state) {
+                        return Icon(
+                            state.connectionStateIcon
+                        );
+                      },
+                    ),
+                  )
+                ]
+            ),
             drawer: const SideDrawer(),
             body: SizedBox(
               width: 100.w,
               height: 100.h,
               child: Stack(
                 children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: BlocBuilder<InternetCubit, InternetState>(
+                      builder: (context, state) {
+                        return AppTexts(
+                          textString: state.connectionState, textFontSize: 25.sp,
+                        );
+                      },
+                    ),
+                  ),
                   Align(
                     alignment: Alignment.center,
                     child: Column(

@@ -9,7 +9,7 @@ import '../models/random_jokes_model.dart';
 class RandomJokesRepository{
   final headers = {HttpHeaders.contentTypeHeader: 'application/json'};
 
-  Future<List<RandomJokesList>> fetchJokesAPI() async {
+  Future<List> fetchJokesAPI() async {
     customPrint.myCustomPrint('Retrieving branch list......');
     try {
       customPrint.myCustomPrint(randomJokesURL);
@@ -30,24 +30,20 @@ class RandomJokesRepository{
           'setup':baseApiData['setup'],
           'punchline':baseApiData['punchline'],
         });
-
-        return temp.map((e) => RandomJokesList.fromJson(e)).toList();
+        return ['200',temp.map((e) => RandomJokesList.fromJson(e)).toList()];
       }
-      else if(response.statusCode == 400){///400
-        return [];
+      else if(response.statusCode == 400){
+        return ['400', 'Could not fetch data'];
       }
-      else{///500
-        return [];
+      else{
+        return ['500', 'Server error'];
       }
     }  on SocketException catch (e) {
-      customPrint.myCustomPrint('Socket Exception');
-      rethrow;
+      return ['501', 'Socket Exception'];
     } on HttpException catch (e) {
-      customPrint.myCustomPrint('Http Exception');
-      rethrow;
+      return ['502', 'Http Exception'];
     } on FormatException catch (e) {
-      customPrint.myCustomPrint('Format Exception');
-      rethrow;
+      return ['503', 'Format Exception'];
     }
   }
 }

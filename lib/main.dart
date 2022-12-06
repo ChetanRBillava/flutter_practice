@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/logic/cubit/home_screen_cubit.dart';
@@ -12,6 +13,7 @@ import 'core/localisations/appLocalizationsDelegate.dart';
 import 'core/localisations/languages.dart';
 import 'data/repositories/random_jokes_repository.dart';
 import 'logic/bloc/calculator_bloc.dart';
+import 'logic/cubit/internet_cubit.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,6 +32,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   RandomJokesRepository randomJokesRepository = RandomJokesRepository();
+  Connectivity connectivity = Connectivity();
   Locale? _locale;
 
   void setLocale(Locale locale) {
@@ -43,6 +46,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => InternetCubit(connectivity: connectivity),
+        ),
         BlocProvider(
           create: (context) => HomeScreenCubit(),
         ),
