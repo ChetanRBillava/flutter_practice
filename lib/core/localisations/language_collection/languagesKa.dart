@@ -25,6 +25,15 @@ class LanguageKa extends Languages {
   @override
   String get homeLabel => "ನೀವು ಈ ಗುಂಡಿಯನ್ನು ಇಸ್ತು ಬಾರಿ ಒತ್ತಿದಿರಿ:";
 
+  @override
+  String get wifiConnected => "ವೈಫೈ ಸಂಪರ್ಕಗೊಂಡಿದೆ";
+
+  @override
+  String get mobileNetworkConnected => "ಮೊಬೈಲ್ ನೆಟ್ವರ್ಕ್ ಸಂಪರ್ಕಗೊಂಡಿದೆ";
+
+  @override
+  String get noInternet => "ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವಿಲ್ಲ";
+
   ///joke
   @override
   String get jokeMessage => "ಹೊಸ ಜೋಕ್ ರಚಿಸಲು ಬಟನ್ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ!";

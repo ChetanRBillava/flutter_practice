@@ -16,6 +16,9 @@ abstract class Languages {
 
   ///home
   String get homeLabel;
+  String get wifiConnected;
+  String get mobileNetworkConnected;
+  String get noInternet;
 
   ///jokes
   String get jokeMessage;

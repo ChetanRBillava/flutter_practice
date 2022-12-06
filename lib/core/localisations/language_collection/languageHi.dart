@@ -25,6 +25,15 @@ class LanguageHi extends Languages {
   @override
   String get homeLabel => "आपने यह बटन इतनी बार दबाया है:";
 
+  @override
+  String get wifiConnected => "वाईफाई जुड़ा हुआ है";
+
+  @override
+  String get mobileNetworkConnected => "मोबाइल नेटवर्क जुड़ा हुआ है";
+
+  @override
+  String get noInternet => "कोई इंटरनेट कनेक्शन नहीं है";
+
   ///joke
   @override
   String get jokeMessage => "नया चुटकुला बनाने के लिए बटन पर क्लिक करें!";

@@ -23,6 +23,17 @@ Here we write the updates of future releases.
 ### Security
 
 
+## [1.1.5] - 6-12-2022
+
+### Added
+- Shared preferences plugin to store app data locally
+- Shared preference variable to store language code
+
+### Changed
+- Static internet message in home page to multi lingual keywords
+- Connection status in Internet cubit
+
+
 ## [1.1.4] - 6-12-2022
 
 ### Added
