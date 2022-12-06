@@ -13,8 +13,6 @@ formFieldDialog(BuildContext context) {
     barrierDismissible: true,
     context: context,
     builder: (BuildContext context) {
-      bool visible = false;
-
       return BlocBuilder<MyFormCubit, MyFormState>(
         builder: (context, state) {
           return StatefulBuilder(

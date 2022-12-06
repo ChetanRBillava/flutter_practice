@@ -1,6 +1,6 @@
 // ignore_for_file: must_be_immutable
 
-part of 'random_jokes__cubit.dart';
+part of 'random_jokes_cubit.dart';
 
 @immutable
 abstract class RandomJokesState {

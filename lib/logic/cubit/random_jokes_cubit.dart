@@ -7,7 +7,7 @@ import 'package:sizer/sizer.dart';
 import '../../data/models/random_jokes_model.dart';
 import '../../data/repositories/random_jokes_repository.dart';
 
-part 'random_jokes__state.dart';
+part 'random_jokes_state.dart';
 
 class RandomJokesCubit extends Cubit<RandomJokesState> {
   final RandomJokesRepository repository;

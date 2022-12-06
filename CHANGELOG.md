@@ -23,6 +23,21 @@ Here we write the updates of future releases.
 ### Security
 
 
+## [1.1.2] - 6-12-2022
+
+### Added
+- logic/cubit folder in test folder
+- Test file for Home screen cubit and My form cubit
+- bloc test plugin for unit test
+- Equatable plugin for cubit states
+
+### Changed
+- Cubit states by extending Equatable class
+- Incrementer function in Home screen cubit by adding parameter in the function call
+- All the functions in My form cubit to Future<bool> return type from void
+- Appropriate logics in My form screen
+
+
 ## [1.1.1] - 3-12-2022
 
 ### Added

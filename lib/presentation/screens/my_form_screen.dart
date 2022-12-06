@@ -291,14 +291,18 @@ class _MyFormScreenState extends State<MyFormScreen> {
                                   buttonSize: 90.w,
                                   borderRadius: 3.w,
                                   fontWeight: FontWeight.bold,
-                                  onTapEvent: (){
+                                  onTapEvent: () async {
                                     customPrint.myCustomPrint(formKey.currentState?.validate());
                                     if(formKey.currentState?.validate() == true){
                                       if(chkbox){
                                         if(gender!=null){
+                                          bool res = await
                                           BlocProvider.of<MyFormCubit>(context).setValues(
-                                              context, nameController.text, gender, pswdController.text, exp
+                                              nameController.text, gender, pswdController.text, exp
                                           );
+                                          if(res){
+                                            formFieldDialog(context);
+                                          }
                                         }
                                         else{
                                           ScaffoldMessenger.of(context).showSnackBar(

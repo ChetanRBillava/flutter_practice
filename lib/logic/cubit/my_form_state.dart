@@ -1,7 +1,12 @@
 part of 'my_form_cubit.dart';
 
-@immutable
-abstract class MyFormState {}
+class MyFormState extends Equatable{
+  @override
+  // TODO: implement props
+
+  @override
+  List<Object> get props => [];
+}
 
 class MyFormDetails extends MyFormState {
   String name, gender, password;
@@ -22,4 +27,7 @@ class MyFormDetails extends MyFormState {
     required this.timer,
     required this.visible,
   });
+
+  @override
+  List<Object> get props => [name, gender, password, exp, heading, subHeading, timer, visible];
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_practice/logic/cubit/random_jokes__cubit.dart';
 import 'package:flutter_practice/presentation/utils/app_texts.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/localisations/languages.dart';
 import '../../core/themes/app_theme.dart';
+import '../../logic/cubit/random_jokes_cubit.dart';
 import '../widgets/app_bar_widget.dart';
 import '../utils/custom_button.dart';
 import '../widgets/sidebar.dart';

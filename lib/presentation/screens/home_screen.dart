@@ -64,16 +64,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: Alignment.bottomCenter,
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 2.h),
-                      child: CustomButton(
-                        //buttonTextColor: AppTheme.textColor_2,
-                        iconData: Icons.add,
-                        iconColor: AppTheme.textColor_2,
-                        buttonColor: AppTheme.buttonBackgroundColor,
-                        buttonSize: 60.w,
-                        borderRadius: 3.w,
-                        fontWeight: FontWeight.bold,
-                        onTapEvent: (){
-                          BlocProvider.of<HomeScreenCubit>(context).incrementer();
+                      child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
+                        builder: (context, state) {
+                          return CustomButton(
+                            //buttonTextColor: AppTheme.textColor_2,
+                            iconData: Icons.add,
+                            iconColor: AppTheme.textColor_2,
+                            buttonColor: AppTheme.buttonBackgroundColor,
+                            buttonSize: 60.w,
+                            borderRadius: 3.w,
+                            fontWeight: FontWeight.bold,
+                            onTapEvent: (){
+                              if(state is HomeScreenInitial){
+                                BlocProvider.of<HomeScreenCubit>(context).incrementer(0);
+                              }
+                              else{
+                                BlocProvider.of<HomeScreenCubit>(context).incrementer((state as HomeScreenIncremented).value);
+                              }
+                            },
+                          );
                         },
                       ),
                     ),

@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:ffi';
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import '../../presentation/widgets/dialogs.dart';
@@ -28,7 +30,7 @@ class MyFormCubit extends Cubit<MyFormState> {
     );
   }
 
-  void setValues(context, String name, gender, password, int exp){
+  Future<bool> setValues(String name, gender, password, int exp) async{
     String heading, subheading;
     if(gender == 'Male'){
       heading = 'Greetings Mr. $name';
@@ -56,7 +58,7 @@ class MyFormCubit extends Cubit<MyFormState> {
           visible: (state as MyFormDetails).visible,
         )
     );
-    formFieldDialog(context);
+    return true;
   }
 
   void updateTimer(bool visible){
@@ -78,7 +80,7 @@ class MyFormCubit extends Cubit<MyFormState> {
             )
         );
 
-        Timer(Duration( seconds: 1), (){
+        Timer(const Duration( seconds: 1), (){
           updateTimer(true);
         });
       }
