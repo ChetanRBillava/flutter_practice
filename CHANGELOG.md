@@ -23,6 +23,22 @@ Here we write the updates of future releases.
 ### Security
 
 
+## [1.1.3] - 6-12-2022
+
+### Added
+- Bloc folder in test/logic folder
+- Bloc test file for bloc unit test
+- Invalid format state in Calculator states
+- Build listener inside calculator screen to display invalid format snackbar
+
+### Changed
+- Bloc states by extending Equatable
+- Backspace event by adding Invalid format state condition
+
+### Removed
+- Build context parameter for Get result event
+
+
 ## [1.1.2] - 6-12-2022
 
 ### Added
