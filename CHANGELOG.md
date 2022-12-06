@@ -7,10 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased] - dd-mm-yyyy
 Here we write the updates of future releases.
 
-1.0.xx belongs to Architecture support
+1.1.xx belongs to Advance topics
 
 ### Added
-- Folders included in the architecture format
+- Advance topics such as testing, push notifications, languages etc.,
 
 ### Changed
 
@@ -21,6 +21,93 @@ Here we write the updates of future releases.
 ### Fixed
 
 ### Security
+
+
+## [1.1.5] - 6-12-2022
+
+### Added
+- Shared preferences plugin to store app data locally
+- Shared preference variable to store language code
+
+### Changed
+- Static internet message in home page to multi lingual keywords
+- Connection status in Internet cubit
+
+
+## [1.1.4] - 6-12-2022
+
+### Added
+- Enums file to store internet connection enums
+- "Connectivity plus" plugin to check the connection state of the device
+- Internet cubit sets
+- Error states in "Random jokes state"
+- Internet connection message in home screen
+- Appropriate return statements on api error/failure
+
+### Changed
+- Return structure of "Random jokes repository"
+- Api calling method to integrate with the internet connection state in "Random jokes screen"
+
+### Removed
+- Build context parameter for fetch jokes function
+
+
+## [1.1.3] - 6-12-2022
+
+### Added
+- Bloc folder in test/logic folder
+- Bloc test file for bloc unit test
+- Invalid format state in Calculator states
+- Build listener inside calculator screen to display invalid format snackbar
+
+### Changed
+- Bloc states by extending Equatable
+- Backspace event by adding Invalid format state condition
+
+### Removed
+- Build context parameter for Get result event
+
+
+## [1.1.2] - 6-12-2022
+
+### Added
+- logic/cubit folder in test folder
+- Test file for Home screen cubit and My form cubit
+- bloc test plugin for unit test
+- Equatable plugin for cubit states
+
+### Changed
+- Cubit states by extending Equatable class
+- Incrementer function in Home screen cubit by adding parameter in the function call
+- All the functions in My form cubit to Future<bool> return type from void
+- Appropriate logics in My form screen
+
+
+## [1.1.1] - 3-12-2022
+
+### Added
+- Assets folder for storing assets
+- Images folder inside assets folder to store image
+- App logo in splash screen
+- Localisations folder to handle multiple languages
+- Languages screen to handle language change
+- "flutter_localizations" plugin to handle multiple languages
+
+### Changed
+- Replaced all the static strings in screens, widgets and cubits with localised multi lingual keywords
+
+
+## [1.1.0] - 2-12-2022
+
+### Added
+- Custom app icon files
+- Custom form field widget
+- Custom dialog box widget
+- Screen to take form input
+- Cubit sets to manage the operations
+
+### Changed
+- Renamed custom button class and filename
 
 
 ## [1.0.9] - 30-11-2022

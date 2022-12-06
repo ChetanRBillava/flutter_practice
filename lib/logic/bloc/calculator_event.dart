@@ -16,9 +16,8 @@ class AppendNumberEvent extends CalculatorEvent{
 
 
 class GetResultEvent extends CalculatorEvent{
-  final BuildContext context;
 
-  GetResultEvent({required this.context});
+  GetResultEvent();
 }
 
 

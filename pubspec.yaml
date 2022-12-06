@@ -2,7 +2,7 @@ name: flutter_practice
 description: A new Flutter project for practice.
 
 publish_to: 'none'
-version: 1.0.9+10
+version: 1.1.5+16
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
@@ -15,6 +15,12 @@ dependencies:
   math_expressions:
   sizer:
   http:
+  bloc_test:
+  equatable:
+  connectivity_plus:
+  shared_preferences:
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +31,7 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/images/
