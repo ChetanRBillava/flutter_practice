@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/core/themes/app_theme.dart';
+import 'package:flutter_practice/logic/cubit/app_theme_cubit.dart';
 import 'package:flutter_practice/logic/cubit/internet_cubit.dart';
 import 'package:flutter_practice/presentation/utils/app_texts.dart';
 import 'package:flutter_practice/presentation/widgets/sidebar.dart';
@@ -27,99 +28,107 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget willPopScope() {
     return WillPopScope(
         onWillPop: onWillPopS,
-        child: SafeArea(
-          child: Scaffold(
-            backgroundColor: AppTheme.backgroundColor,
-            appBar: AppBarWidget(title: Languages.of(context)?.home as String, centerTitle: false, automaticallyImplyLeading:true,
-                actions: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 2.w),
-                    child: BlocBuilder<InternetCubit, InternetState>(
-                      builder: (context, state) {
-                        return Icon(
-                            state.connectionStateIcon
-                        );
-                      },
-                    ),
-                  )
-                ]
-            ),
-            drawer: const SideDrawer(),
-            body: SizedBox(
-              width: 100.w,
-              height: 100.h,
-              child: Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: BlocBuilder<InternetCubit, InternetState>(
-                      builder: (context, state) {
-                        return AppTexts(
-                          textString: (state is InternetConnected && state.connectionState=='wifi')?
-                          Languages.of(context)?.wifiConnected as String:
-                          (state is InternetConnected && state.connectionState=='mobile')?
-                          Languages.of(context)?.mobileNetworkConnected as String:
-                          Languages.of(context)?.noInternet as String,
-                          textFontSize: 16.sp,
-                        );
-                      },
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        AppTexts(
-                          textString: Languages.of(context)?.homeLabel as String,),
-                        BlocBuilder<HomeScreenCubit, HomeScreenState>(
+        child: BlocBuilder<AppThemeCubit, AppThemeState>(
+          builder: (context, appThemeState) {
+            return SafeArea(
+              child: Scaffold(
+                backgroundColor:(appThemeState as AppThemeSet).themeClass.backgroundColor,
+                appBar: AppBarWidget(
+                    title: Languages.of(context)?.home as String,
+                    centerTitle: false, automaticallyImplyLeading:true,
+
+                    actions: [
+                      Padding(
+                        padding: EdgeInsets.only(right: 2.w),
+                        child: BlocBuilder<InternetCubit, InternetState>(
                           builder: (context, state) {
-                            if(state is HomeScreenIncremented){
-                              return AppTexts(
-                                textString: state.value.toString(), textFontSize: 25.sp,
-                              );
-                            }
-                            else{
-                              return AppTexts(
-                                textString: '0', textFontSize: 25.sp,
-                              );
-                            }
+                            return Icon(
+                                state.connectionStateIcon,
+                              color: (appThemeState).themeClass.textColor_1,
+                            );
                           },
                         ),
-                      ],
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 2.h),
-                      child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
-                        builder: (context, state) {
-                          return CustomButton(
-                            //buttonTextColor: AppTheme.textColor_2,
-                            iconData: Icons.add,
-                            iconColor: AppTheme.textColor_2,
-                            buttonColor: AppTheme.buttonBackgroundColor,
-                            buttonSize: 60.w,
-                            borderRadius: 3.w,
-                            fontWeight: FontWeight.bold,
-                            onTapEvent: (){
-                              if(state is HomeScreenInitial){
-                                BlocProvider.of<HomeScreenCubit>(context).incrementer(0);
-                              }
-                              else{
-                                BlocProvider.of<HomeScreenCubit>(context).incrementer((state as HomeScreenIncremented).value);
-                              }
-                            },
-                          );
-                        },
+                      )
+                    ]
+                ),
+                drawer: const SideDrawer(),
+                body: SizedBox(
+                  width: 100.w,
+                  height: 100.h,
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: BlocBuilder<InternetCubit, InternetState>(
+                          builder: (context, state) {
+                            return AppTexts(
+                              textString: (state is InternetConnected && state.connectionState=='wifi')?
+                              Languages.of(context)?.wifiConnected as String:
+                              (state is InternetConnected && state.connectionState=='mobile')?
+                              Languages.of(context)?.mobileNetworkConnected as String:
+                              Languages.of(context)?.noInternet as String,
+                              textFontSize: 16.sp,
+                            );
+                          },
+                        ),
                       ),
-                    ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            AppTexts(
+                              textString: Languages.of(context)?.homeLabel as String,),
+                            BlocBuilder<HomeScreenCubit, HomeScreenState>(
+                              builder: (context, state) {
+                                if(state is HomeScreenIncremented){
+                                  return AppTexts(
+                                    textString: state.value.toString(), textFontSize: 25.sp,
+                                  );
+                                }
+                                else{
+                                  return AppTexts(
+                                    textString: '0', textFontSize: 25.sp,
+                                  );
+                                }
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: 2.h),
+                          child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
+                            builder: (context, state) {
+                              return CustomButton(
+                                //buttonTextColor: AppTheme.textColor_2,
+                                iconData: Icons.add,
+                                iconColor: (appThemeState).themeClass.textColor_1,
+                                buttonColor: (appThemeState).themeClass.buttonBackgroundColor,
+                                buttonSize: 60.w,
+                                borderRadius: 3.w,
+                                fontWeight: FontWeight.bold,
+                                onTapEvent: (){
+                                  if(state is HomeScreenInitial){
+                                    BlocProvider.of<HomeScreenCubit>(context).incrementer(0);
+                                  }
+                                  else{
+                                    BlocProvider.of<HomeScreenCubit>(context).incrementer((state as HomeScreenIncremented).value);
+                                  }
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-          ),
+            );
+          },
         )
     );
   }

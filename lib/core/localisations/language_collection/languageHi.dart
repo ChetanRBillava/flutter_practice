@@ -21,6 +21,9 @@ class LanguageHi extends Languages {
   @override
   String get myForm => "फार्म";
 
+  @override
+  String get theme => "थीम सेटिंग";
+
   ///home
   @override
   String get homeLabel => "आपने यह बटन इतनी बार दबाया है:";

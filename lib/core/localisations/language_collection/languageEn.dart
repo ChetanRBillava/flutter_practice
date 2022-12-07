@@ -21,6 +21,9 @@ class LanguageEn extends Languages {
   @override
   String get myForm => "My form";
 
+  @override
+  String get theme => "Theme setting";
+
   ///home
   @override
   String get homeLabel => "You have pushed the button this many times:";

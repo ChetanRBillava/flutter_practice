@@ -13,6 +13,7 @@ abstract class Languages {
   String get calculator;
   String get jokes;
   String get myForm;
+  String get theme;
 
   ///home
   String get homeLabel;
