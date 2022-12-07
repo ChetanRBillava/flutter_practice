@@ -5,13 +5,14 @@ import 'package:flutter_practice/presentation/screens/random_jokes_screen.dart';
 import 'package:flutter_practice/presentation/screens/calculator_screen.dart';
 import 'package:flutter_practice/presentation/screens/home_screen.dart';
 import 'package:flutter_practice/presentation/screens/splash_screen.dart';
+import 'package:flutter_practice/presentation/screens/theme_setting_screen.dart';
 
 import '../../core/exceptions/route_exception.dart';
 
 class AppRouter {
   static const String splash = '/',
       home = 'home', calc = 'calc', randomJokes = 'randomJokes', myForm = 'myForm',
-      lang = 'lang';
+      lang = 'lang', theme = 'theme';
 
   const AppRouter._();
 
@@ -40,6 +41,10 @@ class AppRouter {
       case lang:
         return MaterialPageRoute(
           builder: (_) => const LanguagesScreen(),
+        );
+      case theme:
+        return MaterialPageRoute(
+          builder: (_) => const ThemeSettingScreen(),
         );
       default:
         throw const RouteException('Route not found!');

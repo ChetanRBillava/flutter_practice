@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/localisations/languages.dart';
-import '../../core/localisations/locale_constant.dart';
-import '../../core/themes/app_theme.dart';
 import '../../logic/cubit/app_theme_cubit.dart';
 import '../utils/app_texts.dart';
+import '../utils/custom_print.dart';
 import '../widgets/app_bar_widget.dart';
 import '../widgets/sidebar.dart';
 
-class LanguagesScreen extends StatefulWidget {
-  const LanguagesScreen({Key? key}) : super(key: key);
+class ThemeSettingScreen extends StatefulWidget {
+  const ThemeSettingScreen({Key? key}) : super(key: key);
 
   @override
-  State<LanguagesScreen> createState() => _LanguagesScreenState();
+  State<ThemeSettingScreen> createState() => _ThemeSettingScreenState();
 }
 
-class _LanguagesScreenState extends State<LanguagesScreen> {
+class _ThemeSettingScreenState extends State<ThemeSettingScreen> {
 
   void _showPicker(context) {
     //debugPrint("clicking..............");
@@ -30,57 +30,67 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                 child: Container(
                   child: Wrap(
                     children: <Widget>[
-                      ///En
+                      ///Dark
                       ListTile(
                         tileColor: (appThemeState as AppThemeSet).themeClass.buttonBackgroundColor,
                         title: Row(
                           children: [
                             AppTexts(
-                              textString: 'English',
-                              textFontSize: 18.sp,
+                              textString: 'Dark mode only',
+                              textFontSize: 14.sp,
                               textAlign: TextAlign.center,
                               fontWeight: FontWeight.bold,
                             ),
                           ],
                         ),
                         onTap: (){
-                          changeLanguage(context, 'en');
+                          BlocProvider.of<AppThemeCubit>(context).setThemeType('dark');
+                          BlocProvider.of<AppThemeCubit>(context).setDarkTheme('dark');
                           Navigator.pop(context);
                         },
                       ),
-                      ///Hi
+                      ///Light
                       ListTile(
-                        tileColor: (appThemeState as AppThemeSet).themeClass.buttonBackgroundColor,
+                        tileColor: (appThemeState).themeClass.buttonBackgroundColor,
                         title: Row(
                           children: [
                             AppTexts(
-                              textString: 'हिंदी',
-                              textFontSize: 18.sp,
+                              textString: 'Light mode only',
+                              textFontSize: 14.sp,
                               textAlign: TextAlign.center,
                               fontWeight: FontWeight.bold,
                             ),
                           ],
                         ),
                         onTap: (){
-                          changeLanguage(context, 'hi');
+                          BlocProvider.of<AppThemeCubit>(context).setThemeType('light');
+                          BlocProvider.of<AppThemeCubit>(context).setLightTheme('light');
                           Navigator.pop(context);
                         },
                       ),
-                      ///Kan
+                      ///Auto
                       ListTile(
-                        tileColor: (appThemeState as AppThemeSet).themeClass.buttonBackgroundColor,
+                        tileColor: (appThemeState).themeClass.buttonBackgroundColor,
                         title: Row(
                           children: [
                             AppTexts(
-                              textString: 'ಕನ್ನಡ',
-                              textFontSize: 18.sp,
+                              textString: 'Auto switching',
+                              textFontSize: 14.sp,
                               textAlign: TextAlign.center,
                               fontWeight: FontWeight.bold,
                             ),
                           ],
                         ),
                         onTap: (){
-                          changeLanguage(context, 'ka');
+                          final Brightness currentBrightness = SchedulerBinding.instance.window.platformBrightness;
+                          customPrint.myCustomPrint('Current brightness $currentBrightness');
+                          if (currentBrightness == Brightness.light) {
+                            BlocProvider.of<AppThemeCubit>(context).setLightTheme('auto');
+                          }
+                          else {
+                            BlocProvider.of<AppThemeCubit>(context).setDarkTheme('auto');
+                          }
+                          BlocProvider.of<AppThemeCubit>(context).setThemeType('auto');
                           Navigator.pop(context);
                         },
                       ),
@@ -100,7 +110,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
         return SafeArea(
           child: Scaffold(
             backgroundColor: (appThemeState as AppThemeSet).themeClass.backgroundColor,
-            appBar: AppBarWidget(title: Languages.of(context)?.language as String, centerTitle: false, automaticallyImplyLeading:true,
+            appBar: AppBarWidget(title: Languages.of(context)?.theme as String, centerTitle: false, automaticallyImplyLeading:true,
                 actions: [
                   Padding(
                     padding: EdgeInsets.only(right: 2.w),
@@ -116,7 +126,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                 ]),
             drawer: const SideDrawer(),
             floatingActionButton: FloatingActionButton(
-                child: Icon(Icons.translate, color:(appThemeState).themeClass.textColor_1,),
+                child: Icon(Icons.dark_mode, color:(appThemeState).themeClass.textColor_1,),
                 onPressed: (){
                   _showPicker(context);
                 }
@@ -125,7 +135,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
               child: Padding(
                 padding: EdgeInsets.all(1.h),
                 child: AppTexts(
-                  textString: Languages.of(context)?.welcomeText as String,
+                  textString: appThemeState.themeSetting,
                   textFontSize: 36.sp,
                   textAlign: TextAlign.center,
                   fontWeight: FontWeight.bold,

@@ -21,6 +21,9 @@ class LanguageKa extends Languages {
   @override
   String get myForm => "ಫಾರ್ಮ್";
 
+  @override
+  String get theme => "ಥೀಮ್ ಸೆಟ್ಟಿಂಗ್";
+
   ///home
   @override
   String get homeLabel => "ನೀವು ಈ ಗುಂಡಿಯನ್ನು ಇಸ್ತು ಬಾರಿ ಒತ್ತಿದಿರಿ:";
