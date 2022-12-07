@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../logic/cubit/app_theme_cubit.dart';
 
 class AppTexts extends StatefulWidget {
   const AppTexts({
@@ -24,15 +27,19 @@ class AppTexts extends StatefulWidget {
 class _AppTextsState extends State<AppTexts> {
   @override
   Widget build(BuildContext context) {
-    return Text(
-      widget.textString,
-      textAlign: widget.textAlign??TextAlign.start,
-      style: TextStyle(
-          color: widget.textColor??Theme.of(context).textTheme.bodyText1?.color,
-          fontSize: widget.textFontSize??12.0.sp,
-          fontWeight: widget.fontWeight??FontWeight.normal,
-          fontFamily: 'Poppins'
-      ),
+    return BlocBuilder<AppThemeCubit, AppThemeState>(
+      builder: (context, appThemeState) {
+        return Text(
+          widget.textString,
+          textAlign: widget.textAlign??TextAlign.start,
+          style: TextStyle(
+              color: widget.textColor??(appThemeState as AppThemeSet).themeClass.textColor_1,
+              fontSize: widget.textFontSize??12.0.sp,
+              fontWeight: widget.fontWeight??FontWeight.normal,
+              fontFamily: 'Poppins'
+          ),
+        );
+      },
     );
   }
 }

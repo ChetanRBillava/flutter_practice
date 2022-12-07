@@ -23,6 +23,20 @@ Here we write the updates of future releases.
 ### Security
 
 
+## [1.1.6] - 7-12-2022
+
+### Added
+- Color inverted logo for dark mode
+- App theme cubit
+- Theme setting screen
+- Theme setting shared preference
+- Function call in splash screen to manage the device changed theme states
+
+### Changed
+- Theme colors from static to inherited classes
+- All the theme color references throughout the screens and widgets
+
+
 ## [1.1.5] - 6-12-2022
 
 ### Added

@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/logic/cubit/home_screen_cubit.dart';
 import 'package:flutter_practice/logic/cubit/my_form_cubit.dart';
@@ -14,6 +15,7 @@ import 'core/localisations/languages.dart';
 import 'core/localisations/locale_constant.dart';
 import 'data/repositories/random_jokes_repository.dart';
 import 'logic/bloc/calculator_bloc.dart';
+import 'logic/cubit/app_theme_cubit.dart';
 import 'logic/cubit/internet_cubit.dart';
 
 void main() {
@@ -31,10 +33,11 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp>{
   RandomJokesRepository randomJokesRepository = RandomJokesRepository();
   Connectivity connectivity = Connectivity();
   Locale? _locale;
+  bool setColor = false;
 
   void setLocale(Locale locale) {
     setState(() {
@@ -61,6 +64,9 @@ class _MyAppState extends State<MyApp> {
           create: (context) => InternetCubit(connectivity: connectivity),
         ),
         BlocProvider(
+          create: (context) => AppThemeCubit(),
+        ),
+        BlocProvider(
           create: (context) => HomeScreenCubit(),
         ),
         BlocProvider(
@@ -74,6 +80,10 @@ class _MyAppState extends State<MyApp> {
         ),
       ],
       child: Sizer(builder: (context, constraints, orientation) {
+        if(!setColor){
+          BlocProvider.of<AppThemeCubit>(context).setLightTheme('auto');
+          setColor = true;
+        }
         return MaterialApp(
           title: Strings.appTitle,
           debugShowCheckedModeBanner: false,
