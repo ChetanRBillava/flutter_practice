@@ -116,6 +116,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                 ]),
             drawer: const SideDrawer(),
             floatingActionButton: FloatingActionButton(
+                backgroundColor: (appThemeState).themeClass.primaryColor,
                 child: Icon(Icons.translate, color:(appThemeState).themeClass.textColor_1,),
                 onPressed: (){
                   _showPicker(context);

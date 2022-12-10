@@ -27,9 +27,11 @@ Here we write the updates of future releases.
 
 ### Added
 - Speech to text plugin to recognise voice input
+- Text to speech plugin to pronounce the speech input text
 - Voice assistant screen for voice input interface
 - Permissions in android manifest file
 - Initialisation function for speech to text plugin in Splash screen
+- Text to speech object in Voice assistant screen
 
 
 ## [1.1.6] - 7-12-2022

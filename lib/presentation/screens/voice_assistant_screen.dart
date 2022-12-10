@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 
 import '../../core/localisations/languages.dart';
 import '../../logic/cubit/app_theme_cubit.dart';
@@ -20,6 +21,7 @@ class VoiceAssistantScreen extends StatefulWidget {
 
 class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
   final SpeechToText _speechToText = SpeechToText();
+  TextToSpeech tts = TextToSpeech();
   bool _speechEnabled = false;
   String speechResult = 'Say something into the mic';
 
@@ -39,6 +41,7 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
         speechResult = result.recognizedWords;
       });
       customPrint.myCustomPrint('Speech result $speechResult');
+      tts.speak('Did you say $speechResult');
     }
   }
   @override
@@ -64,6 +67,7 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                 ]),
             drawer: const SideDrawer(),
             floatingActionButton: FloatingActionButton(
+                backgroundColor: (appThemeState).themeClass.primaryColor,
                 child: Icon(Icons.mic, color:(appThemeState).themeClass.textColor_1,),
                 onPressed: (){
                   _startListening();

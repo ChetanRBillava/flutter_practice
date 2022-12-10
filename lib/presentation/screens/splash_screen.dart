@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/core/constants/strings.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:sizer/sizer.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 
 import '../../logic/cubit/app_theme_cubit.dart';
 import '../router/app_router.dart';
@@ -21,7 +22,9 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> with WidgetsBindingObserver {
   final SpeechToText _speechToText = SpeechToText();
+  TextToSpeech tts = TextToSpeech();
   bool _speechEnabled = false;
+  List<String> speechLang = [];
 
   @override
   void initState(){
@@ -38,6 +41,8 @@ class _SplashScreenState extends State<SplashScreen> with WidgetsBindingObserver
     customPrint.myCustomPrint('Initialising speech');
     _speechEnabled = await _speechToText.initialize();
     customPrint.myCustomPrint('Speech enabled $_speechEnabled');
+    speechLang = await tts.getLanguages();
+    customPrint.myCustomPrint('Speech languages $speechLang');
   }
 
   @override
