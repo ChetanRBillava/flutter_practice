@@ -134,6 +134,21 @@ class _SideDrawerState extends State<SideDrawer> {
                         Navigator.of(context).pushNamed(AppRouter.theme);
                       },
                     ),
+                    ///Voice assistant
+                    ListTile(
+                      leading: Icon(Icons.mic, color: (appThemeState).themeClass.textColor_1),
+                      title:
+                      AppTexts(
+                        textString: Languages.of(context)?.va as String,
+                        textFontSize: 12.0.sp,
+                        fontWeight: FontWeight.bold,
+                        //textColor: (appThemeState).themeClass.textColor_1,
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.of(context).pushNamed(AppRouter.va);
+                      },
+                    ),
 
                   ],
                 ),

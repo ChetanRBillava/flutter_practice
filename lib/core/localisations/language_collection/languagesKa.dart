@@ -24,6 +24,9 @@ class LanguageKa extends Languages {
   @override
   String get theme => "ಥೀಮ್ ಸೆಟ್ಟಿಂಗ್";
 
+  @override
+  String get va => "ಧ್ವನಿ ಸಹಾಯಕ";
+
   ///home
   @override
   String get homeLabel => "ನೀವು ಈ ಗುಂಡಿಯನ್ನು ಇಸ್ತು ಬಾರಿ ಒತ್ತಿದಿರಿ:";

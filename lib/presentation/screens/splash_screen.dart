@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/core/constants/strings.dart';
-import 'package:flutter_practice/core/themes/app_theme.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../logic/cubit/app_theme_cubit.dart';
@@ -19,17 +19,25 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with WidgetsBindingObserver {
+class _SplashScreenState extends State<SplashScreen> with WidgetsBindingObserver {
+  final SpeechToText _speechToText = SpeechToText();
+  bool _speechEnabled = false;
+
   @override
   void initState(){
     // TODO: implement initState
-
+    initSpeech();
     Timer(const Duration(seconds: 1), () {
       checkTheme();
     });
     WidgetsBinding.instance.addObserver(this);
     super.initState();
+  }
+
+  void initSpeech() async {
+    customPrint.myCustomPrint('Initialising speech');
+    _speechEnabled = await _speechToText.initialize();
+    customPrint.myCustomPrint('Speech enabled $_speechEnabled');
   }
 
   @override
@@ -83,6 +91,7 @@ class _SplashScreenState extends State<SplashScreen>
   void dispose() {
     // TODO: implement dispose
     WidgetsBinding.instance.removeObserver(this);
+    _speechToText.cancel();
     super.dispose();
   }
 

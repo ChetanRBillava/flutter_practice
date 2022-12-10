@@ -2,7 +2,7 @@ name: flutter_practice
 description: A new Flutter project for practice.
 
 publish_to: 'none'
-version: 1.1.6+17
+version: 1.1.7+18
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
@@ -19,6 +19,7 @@ dependencies:
   equatable:
   connectivity_plus:
   shared_preferences:
+  speech_to_text:
   flutter_localizations:
     sdk: flutter
 

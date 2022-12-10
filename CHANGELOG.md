@@ -23,6 +23,15 @@ Here we write the updates of future releases.
 ### Security
 
 
+## [1.1.7] - 10-12-2022
+
+### Added
+- Speech to text plugin to recognise voice input
+- Voice assistant screen for voice input interface
+- Permissions in android manifest file
+- Initialisation function for speech to text plugin in Splash screen
+
+
 ## [1.1.6] - 7-12-2022
 
 ### Added
