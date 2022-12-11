@@ -1,6 +1,6 @@
 import '../languages.dart';
 
-class LanguageKa extends Languages {
+class LanguageKn extends Languages {
 
   ///sidebar
   @override
@@ -23,6 +23,9 @@ class LanguageKa extends Languages {
 
   @override
   String get theme => "ಥೀಮ್ ಸೆಟ್ಟಿಂಗ್";
+
+  @override
+  String get va => "ಧ್ವನಿ ಸಹಾಯಕ";
 
   ///home
   @override

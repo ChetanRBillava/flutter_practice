@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/core/constants/strings.dart';
-import 'package:flutter_practice/core/themes/app_theme.dart';
+import 'package:flutter_practice/logic/bloc/voice_assistant_bloc.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../logic/cubit/app_theme_cubit.dart';
@@ -19,14 +19,18 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with WidgetsBindingObserver {
+class _SplashScreenState extends State<SplashScreen> with WidgetsBindingObserver {
+
   @override
   void initState(){
+    customPrint.myCustomPrint('Started');
     // TODO: implement initState
-
     Timer(const Duration(seconds: 1), () {
-      checkTheme();
+      BlocProvider.of<AppThemeCubit>(context).checkTheme();
+      BlocProvider.of<VoiceAssistantBloc>(context).add(SpeechInitialise());
+      Timer(const Duration(seconds: 3), () {
+        Navigator.of(context).pushNamed(AppRouter.home);
+      });
     });
     WidgetsBinding.instance.addObserver(this);
     super.initState();
@@ -50,33 +54,6 @@ class _SplashScreenState extends State<SplashScreen>
       }
     }
     super.didChangePlatformBrightness();
-  }
-
-  Future<void> checkTheme() async {
-
-    final Brightness currentBrightness = SchedulerBinding.instance.window.platformBrightness;
-    String userTheme = await BlocProvider.of<AppThemeCubit>(context).getThemeType();
-    customPrint.myCustomPrint('User theme $userTheme');
-    if(userTheme == 'light'){
-      BlocProvider.of<AppThemeCubit>(context).setLightTheme(userTheme);
-    }
-    else if(userTheme == 'dark'){
-      BlocProvider.of<AppThemeCubit>(context).setDarkTheme(userTheme);
-    }
-    else{
-      customPrint.myCustomPrint('Initial brightness $currentBrightness');
-      if (currentBrightness == Brightness.light) {
-        BlocProvider.of<AppThemeCubit>(context).setLightTheme(userTheme);
-      }
-      else {
-        BlocProvider.of<AppThemeCubit>(context).setDarkTheme(userTheme);
-      }
-    }
-
-    Timer(const Duration(seconds: 3), () {
-      customPrint.myCustomPrint('Started');
-      Navigator.of(context).pushNamed(AppRouter.home);
-    });
   }
 
   @override

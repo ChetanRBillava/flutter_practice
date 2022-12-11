@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../../core/constants/bools.dart';
 
 class CustomPrint {
@@ -9,7 +11,7 @@ class CustomPrint {
       print(printData);
     }
     else if(Booleans.superPrintMode&&superPrint){
-      ///prints data only if super print boolean and super print mode are both set to true
+      ///prints data only if super print boolean and super print mode a-re both set to true
       print(printData);
     }
   }

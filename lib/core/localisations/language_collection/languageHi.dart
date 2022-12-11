@@ -24,6 +24,9 @@ class LanguageHi extends Languages {
   @override
   String get theme => "थीम सेटिंग";
 
+  @override
+  String get va => "आवाज सहायक";
+
   ///home
   @override
   String get homeLabel => "आपने यह बटन इतनी बार दबाया है:";

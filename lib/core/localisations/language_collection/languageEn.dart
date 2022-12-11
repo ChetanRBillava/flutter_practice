@@ -24,6 +24,9 @@ class LanguageEn extends Languages {
   @override
   String get theme => "Theme setting";
 
+  @override
+  String get va => "Voice Assistant";
+
   ///home
   @override
   String get homeLabel => "You have pushed the button this many times:";

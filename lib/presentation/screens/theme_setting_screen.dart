@@ -126,6 +126,7 @@ class _ThemeSettingScreenState extends State<ThemeSettingScreen> {
                 ]),
             drawer: const SideDrawer(),
             floatingActionButton: FloatingActionButton(
+                backgroundColor: (appThemeState).themeClass.primaryColor,
                 child: Icon(Icons.dark_mode, color:(appThemeState).themeClass.textColor_1,),
                 onPressed: (){
                   _showPicker(context);

@@ -107,7 +107,7 @@ formFieldDialog(BuildContext context) {
                           ),
                           CustomButton(
                             iconData: state.visible ? Icons.visibility_off : Icons.visibility,
-                            iconColor: (appThemeState as AppThemeSet).themeClass.textColor_1,
+                            iconColor: (appThemeState).themeClass.textColor_1,
                             buttonColor: (appThemeState).themeClass.buttonBackgroundColor2,
                             buttonSize: 40.w,
                             borderRadius: 3.w,
