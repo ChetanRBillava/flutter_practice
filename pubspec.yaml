@@ -21,6 +21,7 @@ dependencies:
   shared_preferences:
   speech_to_text:
   text_to_speech:
+  avatar_glow:
   flutter_localizations:
     sdk: flutter
 

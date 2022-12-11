@@ -1,6 +1,6 @@
 import '../languages.dart';
 
-class LanguageKa extends Languages {
+class LanguageKn extends Languages {
 
   ///sidebar
   @override

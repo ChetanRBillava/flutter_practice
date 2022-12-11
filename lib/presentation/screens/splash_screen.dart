@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/core/constants/strings.dart';
-import 'package:speech_to_text/speech_to_text.dart';
+import 'package:flutter_practice/logic/bloc/voice_assistant_bloc.dart';
 import 'package:sizer/sizer.dart';
-import 'package:text_to_speech/text_to_speech.dart';
 
 import '../../logic/cubit/app_theme_cubit.dart';
 import '../router/app_router.dart';
@@ -21,28 +20,20 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> with WidgetsBindingObserver {
-  final SpeechToText _speechToText = SpeechToText();
-  TextToSpeech tts = TextToSpeech();
-  bool _speechEnabled = false;
-  List<String> speechLang = [];
 
   @override
   void initState(){
+    customPrint.myCustomPrint('Started');
     // TODO: implement initState
-    initSpeech();
     Timer(const Duration(seconds: 1), () {
-      checkTheme();
+      BlocProvider.of<AppThemeCubit>(context).checkTheme();
+      BlocProvider.of<VoiceAssistantBloc>(context).add(SpeechInitialise());
+      Timer(const Duration(seconds: 3), () {
+        Navigator.of(context).pushNamed(AppRouter.home);
+      });
     });
     WidgetsBinding.instance.addObserver(this);
     super.initState();
-  }
-
-  void initSpeech() async {
-    customPrint.myCustomPrint('Initialising speech');
-    _speechEnabled = await _speechToText.initialize();
-    customPrint.myCustomPrint('Speech enabled $_speechEnabled');
-    speechLang = await tts.getLanguages();
-    customPrint.myCustomPrint('Speech languages $speechLang');
   }
 
   @override
@@ -65,38 +56,10 @@ class _SplashScreenState extends State<SplashScreen> with WidgetsBindingObserver
     super.didChangePlatformBrightness();
   }
 
-  Future<void> checkTheme() async {
-
-    final Brightness currentBrightness = SchedulerBinding.instance.window.platformBrightness;
-    String userTheme = await BlocProvider.of<AppThemeCubit>(context).getThemeType();
-    customPrint.myCustomPrint('User theme $userTheme');
-    if(userTheme == 'light'){
-      BlocProvider.of<AppThemeCubit>(context).setLightTheme(userTheme);
-    }
-    else if(userTheme == 'dark'){
-      BlocProvider.of<AppThemeCubit>(context).setDarkTheme(userTheme);
-    }
-    else{
-      customPrint.myCustomPrint('Initial brightness $currentBrightness');
-      if (currentBrightness == Brightness.light) {
-        BlocProvider.of<AppThemeCubit>(context).setLightTheme(userTheme);
-      }
-      else {
-        BlocProvider.of<AppThemeCubit>(context).setDarkTheme(userTheme);
-      }
-    }
-
-    Timer(const Duration(seconds: 3), () {
-      customPrint.myCustomPrint('Started');
-      Navigator.of(context).pushNamed(AppRouter.home);
-    });
-  }
-
   @override
   void dispose() {
     // TODO: implement dispose
     WidgetsBinding.instance.removeObserver(this);
-    _speechToText.cancel();
     super.dispose();
   }
 

@@ -23,15 +23,21 @@ Here we write the updates of future releases.
 ### Security
 
 
-## [1.1.7] - 10-12-2022
+## [1.1.7] - 11-12-2022
 
 ### Added
 - Speech to text plugin to recognise voice input
 - Text to speech plugin to pronounce the speech input text
-- Voice assistant screen for voice input interface
 - Permissions in android manifest file
-- Initialisation function for speech to text plugin in Splash screen
-- Text to speech object in Voice assistant screen
+- Voice assistant screen for voice input interface
+- Voice assistant bloc set
+- Initialisation function for speech to text plugin in Voice assistant bloc
+- Voice navigation logic in bloc listener section of Voice assistant screen
+
+### Changed
+- Kannada language's code from 'ka' to 'kn'
+- App icon
+- Change theme function call in splash screen to cubit function inside app theme cubit
 
 
 ## [1.1.6] - 7-12-2022

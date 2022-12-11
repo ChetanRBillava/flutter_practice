@@ -6,6 +6,7 @@ import 'package:flutter_practice/logic/cubit/home_screen_cubit.dart';
 import 'package:flutter_practice/logic/cubit/my_form_cubit.dart';
 import 'package:flutter_practice/logic/cubit/random_jokes_cubit.dart';
 import 'package:flutter_practice/presentation/router/app_router.dart';
+import 'package:flutter_practice/presentation/utils/custom_print.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -15,11 +16,12 @@ import 'core/localisations/languages.dart';
 import 'core/localisations/locale_constant.dart';
 import 'data/repositories/random_jokes_repository.dart';
 import 'logic/bloc/calculator_bloc.dart';
+import 'logic/bloc/voice_assistant_bloc.dart';
 import 'logic/cubit/app_theme_cubit.dart';
 import 'logic/cubit/internet_cubit.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -48,6 +50,7 @@ class _MyAppState extends State<MyApp>{
   @override
   void didChangeDependencies() async {
     getLocale().then((locale) {
+      customPrint.myCustomPrint('Selected locale $locale');
       setState(() {
         _locale = locale;
       });
@@ -78,6 +81,9 @@ class _MyAppState extends State<MyApp>{
         BlocProvider(
           create: (context) => CalculatorBloc(),
         ),
+        BlocProvider(
+          create: (context) => VoiceAssistantBloc(),
+        ),
       ],
       child: Sizer(builder: (context, constraints, orientation) {
         if(!setColor){
@@ -93,7 +99,7 @@ class _MyAppState extends State<MyApp>{
           supportedLocales: const [
             Locale('en', ''),
             Locale('hi', ''),
-            Locale('ka', ''),
+            Locale('kn', ''),
           ],
           localizationsDelegates: const [
             AppLocalizationsDelegate(),
