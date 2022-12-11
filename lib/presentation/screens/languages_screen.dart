@@ -50,7 +50,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                       ),
                       ///Hi
                       ListTile(
-                        tileColor: (appThemeState as AppThemeSet).themeClass.buttonBackgroundColor,
+                        tileColor: (appThemeState).themeClass.buttonBackgroundColor,
                         title: Row(
                           children: [
                             AppTexts(
@@ -68,7 +68,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                       ),
                       ///Kan
                       ListTile(
-                        tileColor: (appThemeState as AppThemeSet).themeClass.buttonBackgroundColor,
+                        tileColor: (appThemeState).themeClass.buttonBackgroundColor,
                         title: Row(
                           children: [
                             AppTexts(
@@ -80,7 +80,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                           ],
                         ),
                         onTap: (){
-                          changeLanguage(context, 'ka');
+                          changeLanguage(context, 'kn');
                           Navigator.pop(context);
                         },
                       ),
@@ -116,6 +116,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
                 ]),
             drawer: const SideDrawer(),
             floatingActionButton: FloatingActionButton(
+                backgroundColor: (appThemeState).themeClass.primaryColor,
                 child: Icon(Icons.translate, color:(appThemeState).themeClass.textColor_1,),
                 onPressed: (){
                   _showPicker(context);

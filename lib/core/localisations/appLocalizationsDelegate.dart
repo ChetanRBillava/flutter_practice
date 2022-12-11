@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'language_collection/languageEn.dart';
 import 'language_collection/languageHi.dart';
-import 'language_collection/languagesKa.dart';
+import 'language_collection/languagesKn.dart';
 import 'languages.dart';
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
@@ -11,7 +11,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
 
   @override
   bool isSupported(Locale locale) =>
-      ['en', 'hi', 'ka'].contains(locale.languageCode);
+      ['en', 'hi', 'kn'].contains(locale.languageCode);
 
   @override
   Future<Languages> load(Locale locale) => _load(locale);
@@ -22,8 +22,8 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<Languages> {
         return LanguageEn();
       case 'hi':
         return LanguageHi();
-      case 'ka':
-        return LanguageKa();
+      case 'kn':
+        return LanguageKn();
       default:
         return LanguageEn();
     }
