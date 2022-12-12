@@ -8,8 +8,10 @@ import 'package:flutter_practice/presentation/utils/app_texts.dart';
 import 'package:flutter_practice/presentation/widgets/sidebar.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../core/constants/images.dart';
 import '../../core/localisations/languages.dart';
 import '../../logic/cubit/home_screen_cubit.dart';
+import '../router/app_router.dart';
 import '../utils/custom_print.dart';
 import '../widgets/app_bar_widget.dart';
 import '../utils/custom_button.dart';
@@ -38,16 +40,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     centerTitle: false, automaticallyImplyLeading:true,
 
                     actions: [
-                      Padding(
-                        padding: EdgeInsets.only(right: 2.w),
-                        child: BlocBuilder<InternetCubit, InternetState>(
-                          builder: (context, state) {
-                            return Icon(
-                                state.connectionStateIcon,
+                      BlocBuilder<InternetCubit, InternetState>(
+                        builder: (context, state) {
+                          return Padding(
+                            padding: EdgeInsets.only(left: 4.w),
+                            child: Icon(
+                              state.connectionStateIcon,
                               color: (appThemeState).themeClass.textColor_1,
-                            );
-                          },
-                        ),
+                            ),
+                          );
+                        },
                       )
                     ]
                 ),
@@ -58,20 +60,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Stack(
                     children: [
                       ///network state
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: BlocBuilder<InternetCubit, InternetState>(
-                          builder: (context, state) {
-                            return AppTexts(
-                              textString: (state is InternetConnected && state.connectionState=='wifi')?
-                              Languages.of(context)?.wifiConnected as String:
-                              (state is InternetConnected && state.connectionState=='mobile')?
-                              Languages.of(context)?.mobileNetworkConnected as String:
-                              Languages.of(context)?.noInternet as String,
-                              textFontSize: 16.sp,
-                            );
-                          },
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          BlocBuilder<InternetCubit, InternetState>(
+                            builder: (context, state) {
+                              return AppTexts(
+                                textString: (state is InternetConnected && state.connectionState=='wifi')?
+                                Languages.of(context)?.wifiConnected as String:
+                                (state is InternetConnected && state.connectionState=='mobile')?
+                                Languages.of(context)?.mobileNetworkConnected as String:
+                                Languages.of(context)?.noInternet as String,
+                                textFontSize: 16.sp,
+                              );
+                            },
+                          ),
+                        ],
                       ),
                       ///counter
                       Align(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/presentation/screens/animation_screens/animations_screen.dart';
 import 'package:flutter_practice/presentation/screens/languages_screen.dart';
+import 'package:flutter_practice/presentation/screens/animation_screens/logo_screen.dart';
 import 'package:flutter_practice/presentation/screens/my_form_screen.dart';
 import 'package:flutter_practice/presentation/screens/random_jokes_screen.dart';
 import 'package:flutter_practice/presentation/screens/calculator_screen.dart';
@@ -13,7 +15,7 @@ import '../../core/exceptions/route_exception.dart';
 class AppRouter {
   static const String splash = '/',
       home = 'home', calc = 'calc', randomJokes = 'randomJokes', myForm = 'myForm',
-      lang = 'lang', theme = 'theme', va = 'va';
+      lang = 'lang', theme = 'theme', va = 'va', animations = 'animations', logo = 'logo';
 
   const AppRouter._();
 
@@ -50,6 +52,14 @@ class AppRouter {
       case va:
         return MaterialPageRoute(
           builder: (_) => const VoiceAssistantScreen(),
+        );
+      case animations:
+        return MaterialPageRoute(
+          builder: (_) => const AnimationsScreen(),
+        );
+      case logo:
+        return MaterialPageRoute(
+          builder: (_) => const LogoScreen(),
         );
       default:
         throw const RouteException('Route not found!');

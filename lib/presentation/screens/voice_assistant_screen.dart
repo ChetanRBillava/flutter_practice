@@ -87,7 +87,7 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                       )
                     ]),
                 drawer: const SideDrawer(),
-                floatingActionButton: FloatingActionButton(
+                floatingActionButton: vaState is VoiceAssistantListening?const SizedBox.shrink():FloatingActionButton(
                     backgroundColor: (appThemeState).themeClass.primaryColor,
                     child: Icon(Icons.mic, color:(appThemeState).themeClass.textColor_1,),
                     onPressed: (){
@@ -134,16 +134,23 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                   ),
                 ):
                 vaState is VoiceAssistantListening?Center(
-                  child: AvatarGlow(
-                    endRadius: 25.w,
-                    glowColor: (appThemeState).themeClass.textCaptionColor,
-                    child: Material(
-                      elevation: 8.0,
-                      shape: const CircleBorder(),
-                      child: CircleAvatar(
-                        backgroundColor: (appThemeState).themeClass.primaryColor,
-                        radius: 30.0,
-                        child: Icon(Icons.mic, color:(appThemeState).themeClass.textColor_1,),
+                  child: GestureDetector(
+                    onTap: (){
+                      BlocProvider.of<VoiceAssistantBloc>(context).add(SpeechStop());
+                    },
+                    child: AvatarGlow(
+                      endRadius: 25.w,
+                      glowColor: (appThemeState).themeClass.textCaptionColor,
+                      child: Material(
+                        elevation: 8.0,
+                        shape: const CircleBorder(),
+                        child: CircleAvatar(
+                          backgroundColor: (appThemeState).themeClass.primaryColor,
+                          radius: 30.0,
+                          child: Icon(
+                            Icons.mic, color:(appThemeState).themeClass.textColor_1,
+                          ),
+                        ),
                       ),
                     ),
                   ),

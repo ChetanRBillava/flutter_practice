@@ -74,7 +74,9 @@ class _SplashScreenState extends State<SplashScreen> with WidgetsBindingObserver
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(appThemeState.brightness==Brightness.light?AppImages.logo:AppImages.logoDark),
+                Image.asset(
+                    appThemeState.brightness==Brightness.light?AppImages.logo:AppImages.logoDark
+                ),
                 AppTexts(
                   textString: Strings.appVersion,
                   textFontSize: 10.sp,

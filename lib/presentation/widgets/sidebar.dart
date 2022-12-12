@@ -149,6 +149,21 @@ class _SideDrawerState extends State<SideDrawer> {
                         Navigator.of(context).pushNamed(AppRouter.va);
                       },
                     ),
+                    ///Animations
+                    ListTile(
+                      leading: Icon(Icons.animation, color: (appThemeState).themeClass.textColor_1),
+                      title:
+                      AppTexts(
+                        textString: Languages.of(context)?.anim as String,
+                        textFontSize: 12.0.sp,
+                        fontWeight: FontWeight.bold,
+                        //textColor: (appThemeState).themeClass.textColor_1,
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.of(context).pushNamed(AppRouter.animations);
+                      },
+                    ),
 
                   ],
                 ),

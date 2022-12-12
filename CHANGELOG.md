@@ -26,7 +26,10 @@ Here we write the updates of future releases.
 ## [1.1.8] - 12-12-2022
 
 ### Added
+- Animations screen
 - Tween animation for list tiles in Guides section of Voice assistant screen
+- Hero animation in logo screen
+- Navigation option for animations screen sidebar
 
 ### Changed
 - Asset image reference from hardcoded values to class oriented

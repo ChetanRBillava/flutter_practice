@@ -15,6 +15,7 @@ abstract class Languages {
   String get myForm;
   String get theme;
   String get va;
+  String get anim;
 
   ///home
   String get homeLabel;
