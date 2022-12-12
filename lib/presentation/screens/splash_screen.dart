@@ -7,6 +7,7 @@ import 'package:flutter_practice/core/constants/strings.dart';
 import 'package:flutter_practice/logic/bloc/voice_assistant_bloc.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../core/constants/images.dart';
 import '../../logic/cubit/app_theme_cubit.dart';
 import '../router/app_router.dart';
 import '../utils/app_texts.dart';
@@ -73,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> with WidgetsBindingObserver
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(appThemeState.brightness==Brightness.light?'assets/images/logo.png':'assets/images/logo2.png'),
+                Image.asset(appThemeState.brightness==Brightness.light?AppImages.logo:AppImages.logoDark),
                 AppTexts(
                   textString: Strings.appVersion,
                   textFontSize: 10.sp,

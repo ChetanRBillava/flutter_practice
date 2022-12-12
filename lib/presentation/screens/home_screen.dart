@@ -57,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 100.h,
                   child: Stack(
                     children: [
+                      ///network state
                       Align(
                         alignment: Alignment.topRight,
                         child: BlocBuilder<InternetCubit, InternetState>(
@@ -72,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                       ),
+                      ///counter
                       Align(
                         alignment: Alignment.center,
                         child: Column(
@@ -96,6 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
+                      ///button
                       Align(
                         alignment: Alignment.bottomCenter,
                         child: Padding(

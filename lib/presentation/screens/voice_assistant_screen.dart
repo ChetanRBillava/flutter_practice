@@ -151,99 +151,159 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                 vaState is VoiceAssistantGuide?Column(
                   children: [
                     ///home
-                    ListTile(
-                      title:
-                      AppTexts(
-                        textString: 'HOME',
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      subtitle: AppTexts(
-                        textString: 'Say HOME to navigate to Home screen',
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
+                    TweenAnimationBuilder(
+                      tween: Tween<double>(begin: 0, end: 1),
+                      duration: const Duration(milliseconds: 1000),
+                      builder: (BuildContext context, double value, Widget? child) {
+                        return Opacity(
+                          opacity: value,
+                          child: child,
+                        );
+                      },
+                      child: ListTile(
+                        title:
+                        AppTexts(
+                          textString: 'HOME',
+                          textFontSize: 12.0.sp,
+                          fontWeight: FontWeight.bold,
+                          textColor: (appThemeState).themeClass.textColor_1,
+                        ),
+                        subtitle: AppTexts(
+                          textString: 'Say HOME to navigate to Home screen',
+                          textFontSize: 12.0.sp,
+                          fontWeight: FontWeight.bold,
+                          textColor: (appThemeState).themeClass.textColor_1,
+                        ),
                       ),
                     ),
                     ///calc
-                    ListTile(
-                      title:
-                      AppTexts(
-                        textString: 'CALCULATOR',
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      subtitle: AppTexts(
-                        textString: 'Say CALCULATOR to navigate to Calculator screen',
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
+                    TweenAnimationBuilder(
+                      tween: Tween<double>(begin: 0, end: 1),
+                      duration: const Duration(milliseconds: 1400),
+                      builder: (BuildContext context, double value, Widget? child) {
+                        return Opacity(
+                          opacity: value,
+                          child: child,
+                        );
+                      },
+                      child: ListTile(
+                        title:
+                        AppTexts(
+                          textString: 'CALCULATOR',
+                          textFontSize: 12.0.sp,
+                          fontWeight: FontWeight.bold,
+                          textColor: (appThemeState).themeClass.textColor_1,
+                        ),
+                        subtitle: AppTexts(
+                          textString: 'Say CALCULATOR to navigate to Calculator screen',
+                          textFontSize: 12.0.sp,
+                          fontWeight: FontWeight.bold,
+                          textColor: (appThemeState).themeClass.textColor_1,
+                        ),
                       ),
                     ),
                     ///jokes
-                    ListTile(
-                      title:
-                      AppTexts(
-                        textString: 'JOKES',
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      subtitle: AppTexts(
-                        textString: 'Say JOKES to navigate to Jokes screen',
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
+                    TweenAnimationBuilder(
+                      tween: Tween<double>(begin: 0, end: 1),
+                      duration: const Duration(milliseconds: 1800),
+                      builder: (BuildContext context, double value, Widget? child) {
+                        return Opacity(
+                          opacity: value,
+                          child: child,
+                        );
+                      },
+                      child: ListTile(
+                        title:
+                        AppTexts(
+                          textString: 'JOKES',
+                          textFontSize: 12.0.sp,
+                          fontWeight: FontWeight.bold,
+                          textColor: (appThemeState).themeClass.textColor_1,
+                        ),
+                        subtitle: AppTexts(
+                          textString: 'Say JOKES to navigate to Jokes screen',
+                          textFontSize: 12.0.sp,
+                          fontWeight: FontWeight.bold,
+                          textColor: (appThemeState).themeClass.textColor_1,
+                        ),
                       ),
                     ),
                     ///form
-                    ListTile(
-                      title:
-                      AppTexts(
-                        textString: 'FORM',
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      subtitle: AppTexts(
-                        textString: 'Say FORM to navigate to FORM screen',
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
+                    TweenAnimationBuilder(
+                      tween: Tween<double>(begin: 0, end: 1),
+                      duration: const Duration(milliseconds: 2200),
+                      builder: (BuildContext context, double value, Widget? child) {
+                        return Opacity(
+                          opacity: value,
+                          child: child,
+                        );
+                      },
+                      child: ListTile(
+                        title:
+                        AppTexts(
+                          textString: 'FORM',
+                          textFontSize: 12.0.sp,
+                          fontWeight: FontWeight.bold,
+                          textColor: (appThemeState).themeClass.textColor_1,
+                        ),
+                        subtitle: AppTexts(
+                          textString: 'Say FORM to navigate to FORM screen',
+                          textFontSize: 12.0.sp,
+                          fontWeight: FontWeight.bold,
+                          textColor: (appThemeState).themeClass.textColor_1,
+                        ),
                       ),
                     ),
                     ///lang
-                    ListTile(
-                      title:
-                      AppTexts(
-                        textString: 'LANGUAGE',
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      subtitle: AppTexts(
-                        textString: 'Say LANGUAGE to navigate to Language screen',
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
+                    TweenAnimationBuilder(
+                      tween: Tween<double>(begin: 0, end: 1),
+                      duration: const Duration(milliseconds: 2600),
+                      builder: (BuildContext context, double value, Widget? child) {
+                        return Opacity(
+                          opacity: value,
+                          child: child,
+                        );
+                      },
+                      child: ListTile(
+                        title:
+                        AppTexts(
+                          textString: 'LANGUAGE',
+                          textFontSize: 12.0.sp,
+                          fontWeight: FontWeight.bold,
+                          textColor: (appThemeState).themeClass.textColor_1,
+                        ),
+                        subtitle: AppTexts(
+                          textString: 'Say LANGUAGE to navigate to Language screen',
+                          textFontSize: 12.0.sp,
+                          fontWeight: FontWeight.bold,
+                          textColor: (appThemeState).themeClass.textColor_1,
+                        ),
                       ),
                     ),
                     ///theme
-                    ListTile(
-                      title:
-                      AppTexts(
-                        textString: 'THEME',
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      subtitle: AppTexts(
-                        textString: 'Say THEME to navigate to Theme screen',
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
+                    TweenAnimationBuilder(
+                      tween: Tween<double>(begin: 0, end: 1),
+                      duration: const Duration(milliseconds: 3000),
+                      builder: (BuildContext context, double value, Widget? child) {
+                        return Opacity(
+                          opacity: value,
+                          child: child,
+                        );
+                      },
+                      child: ListTile(
+                        title:
+                        AppTexts(
+                          textString: 'THEME',
+                          textFontSize: 12.0.sp,
+                          fontWeight: FontWeight.bold,
+                          textColor: (appThemeState).themeClass.textColor_1,
+                        ),
+                        subtitle: AppTexts(
+                          textString: 'Say THEME to navigate to Theme screen',
+                          textFontSize: 12.0.sp,
+                          fontWeight: FontWeight.bold,
+                          textColor: (appThemeState).themeClass.textColor_1,
+                        ),
                       ),
                     ),
                   ],

@@ -23,6 +23,15 @@ Here we write the updates of future releases.
 ### Security
 
 
+## [1.1.8] - 12-12-2022
+
+### Added
+- Tween animation for list tiles in Guides section of Voice assistant screen
+
+### Changed
+- Asset image reference from hardcoded values to class oriented
+
+
 ## [1.1.7] - 11-12-2022
 
 ### Added
