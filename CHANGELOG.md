@@ -30,6 +30,8 @@ Here we write the updates of future releases.
 - Tween animation for list tiles in Guides section of Voice assistant screen
 - Hero animation in logo screen
 - Navigation option for animations screen sidebar
+- Auto popup logic for app bar in logo screen
+- Explicit color animation in Animations screen
 
 ### Changed
 - Asset image reference from hardcoded values to class oriented

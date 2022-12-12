@@ -171,13 +171,13 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                         title:
                         AppTexts(
                           textString: 'HOME',
-                          textFontSize: 12.0.sp,
+                          textFontSize: 16.0.sp,
                           fontWeight: FontWeight.bold,
                           textColor: (appThemeState).themeClass.textColor_1,
                         ),
                         subtitle: AppTexts(
                           textString: 'Say HOME to navigate to Home screen',
-                          textFontSize: 12.0.sp,
+                          textFontSize: 10.0.sp,
                           fontWeight: FontWeight.bold,
                           textColor: (appThemeState).themeClass.textColor_1,
                         ),
@@ -197,13 +197,13 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                         title:
                         AppTexts(
                           textString: 'CALCULATOR',
-                          textFontSize: 12.0.sp,
+                          textFontSize: 16.0.sp,
                           fontWeight: FontWeight.bold,
                           textColor: (appThemeState).themeClass.textColor_1,
                         ),
                         subtitle: AppTexts(
                           textString: 'Say CALCULATOR to navigate to Calculator screen',
-                          textFontSize: 12.0.sp,
+                          textFontSize: 10.0.sp,
                           fontWeight: FontWeight.bold,
                           textColor: (appThemeState).themeClass.textColor_1,
                         ),
@@ -223,13 +223,13 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                         title:
                         AppTexts(
                           textString: 'JOKES',
-                          textFontSize: 12.0.sp,
+                          textFontSize: 16.0.sp,
                           fontWeight: FontWeight.bold,
                           textColor: (appThemeState).themeClass.textColor_1,
                         ),
                         subtitle: AppTexts(
                           textString: 'Say JOKES to navigate to Jokes screen',
-                          textFontSize: 12.0.sp,
+                          textFontSize: 10.0.sp,
                           fontWeight: FontWeight.bold,
                           textColor: (appThemeState).themeClass.textColor_1,
                         ),
@@ -249,13 +249,13 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                         title:
                         AppTexts(
                           textString: 'FORM',
-                          textFontSize: 12.0.sp,
+                          textFontSize: 16.0.sp,
                           fontWeight: FontWeight.bold,
                           textColor: (appThemeState).themeClass.textColor_1,
                         ),
                         subtitle: AppTexts(
                           textString: 'Say FORM to navigate to FORM screen',
-                          textFontSize: 12.0.sp,
+                          textFontSize: 10.0.sp,
                           fontWeight: FontWeight.bold,
                           textColor: (appThemeState).themeClass.textColor_1,
                         ),
@@ -275,13 +275,13 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                         title:
                         AppTexts(
                           textString: 'LANGUAGE',
-                          textFontSize: 12.0.sp,
+                          textFontSize: 16.0.sp,
                           fontWeight: FontWeight.bold,
                           textColor: (appThemeState).themeClass.textColor_1,
                         ),
                         subtitle: AppTexts(
                           textString: 'Say LANGUAGE to navigate to Language screen',
-                          textFontSize: 12.0.sp,
+                          textFontSize: 10.0.sp,
                           fontWeight: FontWeight.bold,
                           textColor: (appThemeState).themeClass.textColor_1,
                         ),
@@ -301,13 +301,13 @@ class _VoiceAssistantScreenState extends State<VoiceAssistantScreen> {
                         title:
                         AppTexts(
                           textString: 'THEME',
-                          textFontSize: 12.0.sp,
+                          textFontSize: 16.0.sp,
                           fontWeight: FontWeight.bold,
                           textColor: (appThemeState).themeClass.textColor_1,
                         ),
                         subtitle: AppTexts(
                           textString: 'Say THEME to navigate to Theme screen',
-                          textFontSize: 12.0.sp,
+                          textFontSize: 10.0.sp,
                           fontWeight: FontWeight.bold,
                           textColor: (appThemeState).themeClass.textColor_1,
                         ),

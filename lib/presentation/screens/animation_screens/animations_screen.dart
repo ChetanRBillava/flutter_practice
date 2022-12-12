@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_practice/presentation/utils/custom_print.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../core/constants/images.dart';
@@ -17,13 +18,48 @@ class AnimationsScreen extends StatefulWidget {
   State<AnimationsScreen> createState() => _AnimationsScreenState();
 }
 
-class _AnimationsScreenState extends State<AnimationsScreen> {
+class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerProviderStateMixin{
+  late AnimationController animationController;
+  late Animation colorAnimation;
+  bool colorAnim = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    animationController = AnimationController(
+        duration: const Duration(milliseconds: 600),
+        vsync: this
+    );
+    colorAnimation = ColorTween(begin: Colors.white, end: const Color(0xff1a6513)).animate(animationController);
+    animationController.addStatusListener((status) {
+      customPrint.myCustomPrint(status);
+      if(status == AnimationStatus.completed){
+        setState(() {
+          colorAnim = true;
+        });
+      }
+      else{
+        setState(() {
+          colorAnim = false;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppThemeCubit, AppThemeState>(
     builder: (context, appThemeState) {
         return SafeArea(
             child: Scaffold(
+              backgroundColor:(appThemeState as AppThemeSet).themeClass.backgroundColor,
               appBar: AppBarWidget(title: Languages.of(context)?.anim as String, centerTitle: false, automaticallyImplyLeading:true,
                   actions: [
                     Padding(
@@ -38,27 +74,63 @@ class _AnimationsScreenState extends State<AnimationsScreen> {
                       ),
                     )
                   ]),
-              floatingActionButton: FloatingActionButton(
-                heroTag: 'logo',
-                  backgroundColor: (appThemeState as AppThemeSet).themeClass.primaryColor,
-                  child: Image.asset(
-                      appThemeState.brightness==Brightness.light?AppImages.logo:AppImages.logoDark,
-                      height: 10.h,
-                      fit: BoxFit.fitHeight
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(AppRouter.logo);
+              floatingActionButton: GestureDetector(
+                onDoubleTap: (){
+                  if(colorAnim){
+                    animationController.reverse();
                   }
+                  else{
+                    animationController.forward();
+                  }
+                },
+                child: FloatingActionButton(
+                  heroTag: 'logo',
+                    backgroundColor: (appThemeState).themeClass.primaryColor,
+                    child: Image.asset(
+                        appThemeState.brightness==Brightness.light?AppImages.logo:AppImages.logoDark,
+                        height: 10.h,
+                        fit: BoxFit.fitHeight
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(AppRouter.logo);
+                    }
+
+                ),
               ),
               drawer: const SideDrawer(),
-              body: Center(
-                child:
-                AppTexts(
-                  textString: Languages.of(context)?.anim as String,
-                  textFontSize: 30.0.sp,
-                  fontWeight: FontWeight.bold,
-                  //textColor: (appThemeState).themeClass.textColor_1,
-                ),
+              body: AnimatedBuilder(
+                animation: animationController,
+                builder: (BuildContext context, Widget? child) {
+                  return Column(
+                    children: [
+                      TweenAnimationBuilder(
+                        tween: Tween<double>(begin: 0, end: 1),
+                        duration: const Duration(milliseconds: 1000),
+                        builder: (BuildContext context, double value, Widget? child) {
+                          return Opacity(
+                            opacity: value,
+                            child: child,
+                          );
+                        },
+                        child: ListTile(
+                          title:
+                          AppTexts(
+                            textString: 'Single tap',
+                            textFontSize: 16.0.sp,
+                            fontWeight: FontWeight.bold,
+                            textColor: colorAnimation.value,
+                          ),
+                          subtitle: AppTexts(
+                            textString: 'Tap once on the button for logo animation',
+                            textFontSize: 10.0.sp,
+                            fontWeight: FontWeight.bold,
+                            textColor: (appThemeState).themeClass.textColor_1,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             )
         );
