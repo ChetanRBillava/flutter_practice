@@ -32,6 +32,7 @@ Here we write the updates of future releases.
 - Navigation option for animations screen sidebar
 - Auto popup logic for app bar in logo screen
 - Explicit color animation in Animations screen
+- Tween sequences
 
 ### Changed
 - Asset image reference from hardcoded values to class oriented

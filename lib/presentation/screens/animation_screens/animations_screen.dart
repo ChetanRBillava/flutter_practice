@@ -20,7 +20,10 @@ class AnimationsScreen extends StatefulWidget {
 
 class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerProviderStateMixin{
   late AnimationController animationController;
-  late Animation colorAnimation;
+  late Animation<Color?> colorAnimation = ColorTween(begin: Colors.white, end: const Color(
+      0xff40fa31))
+      .animate(animationController);
+  late Animation<double> sizeAnimation;
   bool colorAnim = false;
 
   @override
@@ -28,10 +31,24 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
     super.initState();
 
     animationController = AnimationController(
-        duration: const Duration(milliseconds: 600),
+        duration: const Duration(milliseconds: 250),
         vsync: this
     );
-    colorAnimation = ColorTween(begin: Colors.white, end: const Color(0xff1a6513)).animate(animationController);
+
+
+    sizeAnimation = TweenSequence(
+      <TweenSequenceItem<double>>[
+        TweenSequenceItem<double>(
+            tween: Tween<double>(begin: 16.sp, end: 20.sp),
+    weight: 50
+        ),
+        TweenSequenceItem<double>(
+    tween: Tween<double>(begin: 20.sp, end: 16.sp),
+    weight: 50
+        ),
+      ]
+    ).animate(animationController);
+
     animationController.addStatusListener((status) {
       customPrint.myCustomPrint(status);
       if(status == AnimationStatus.completed){
@@ -116,12 +133,37 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
                           title:
                           AppTexts(
                             textString: 'Single tap',
-                            textFontSize: 16.0.sp,
+                            textFontSize: sizeAnimation.value,
                             fontWeight: FontWeight.bold,
                             textColor: colorAnimation.value,
                           ),
                           subtitle: AppTexts(
                             textString: 'Tap once on the button for logo animation',
+                            textFontSize: 10.0.sp,
+                            fontWeight: FontWeight.bold,
+                            textColor: (appThemeState).themeClass.textColor_1,
+                          ),
+                        ),
+                      ),
+                      TweenAnimationBuilder(
+                        tween: Tween<double>(begin: 0, end: 1),
+                        duration: const Duration(milliseconds: 1000),
+                        builder: (BuildContext context, double value, Widget? child) {
+                          return Opacity(
+                            opacity: value,
+                            child: child,
+                          );
+                        },
+                        child: ListTile(
+                          title:
+                          AppTexts(
+                            textString: 'Double tap',
+                            textFontSize: sizeAnimation.value,
+                            fontWeight: FontWeight.bold,
+                            textColor: colorAnimation.value,
+                          ),
+                          subtitle: AppTexts(
+                            textString: 'Double tap on the button for size and color animation',
                             textFontSize: 10.0.sp,
                             fontWeight: FontWeight.bold,
                             textColor: (appThemeState).themeClass.textColor_1,
