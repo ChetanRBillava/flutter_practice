@@ -34,6 +34,7 @@ Here we write the updates of future releases.
 - Explicit color animation in Animations screen
 - Tween sequences
 - Curve property
+- Stagger list animation
 
 ### Changed
 - Asset image reference from hardcoded values to class oriented

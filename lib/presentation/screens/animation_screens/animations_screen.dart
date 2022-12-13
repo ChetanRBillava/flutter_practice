@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/presentation/utils/custom_print.dart';
@@ -23,6 +25,14 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
   late Animation<Color?> colorAnimation;
   late Animation<double> sizeAnimation;
   late final Animation<double> curve;
+
+  List animationOptionsList = [
+    ['Single tap', 'Tap once on the button for logo animation'],
+    ['Double tap', 'Double tap on the button for size and color animation'],
+  ], animationOptions = [];
+  final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
+  Tween<Offset> offset = Tween(begin: const Offset(1,1), end: const Offset(0,0));
+
   bool colorAnim = false;
 
   @override
@@ -30,7 +40,7 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
     super.initState();
 
     animationController = AnimationController(
-        duration: const Duration(milliseconds: 2000),
+        duration: const Duration(milliseconds: 1000),
         vsync: this
     );
 
@@ -64,6 +74,19 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
         });
       }
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Future future = Future(() {});
+      for (var element in animationOptionsList) {
+        future = future.then((value) {
+          return Future.delayed(const Duration(milliseconds: 200), (){
+            customPrint.myCustomPrint(element);
+            animationOptions.add(element);
+            listKey.currentState?.insertItem(animationOptions.length-1);
+          });
+        });
+      }
+    });
   }
 
   @override
@@ -92,7 +115,8 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
                         ),
                       ),
                     )
-                  ]),
+                  ]
+              ),
               floatingActionButton: GestureDetector(
                 onDoubleTap: (){
                   if(colorAnim){
@@ -120,61 +144,37 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
               body: AnimatedBuilder(
                 animation: animationController,
                 builder: (BuildContext context, Widget? child) {
-                  return Column(
-                    children: [
-                      TweenAnimationBuilder(
-                        tween: Tween<double>(begin: 0, end: 1),
-                        duration: const Duration(milliseconds: 1000),
-                        curve: Curves.decelerate,
-                        builder: (BuildContext context, double value, Widget? child) {
-                          return Opacity(
-                            opacity: value,
-                            child: child,
-                          );
-                        },
-                        child: ListTile(
-                          title:
-                          AppTexts(
-                            textString: 'Single tap',
-                            textFontSize: sizeAnimation.value,
-                            fontWeight: FontWeight.bold,
-                            textColor: colorAnimation.value,
+                  return AnimatedList(
+                    key: listKey,
+                    initialItemCount: animationOptions.length,
+                      itemBuilder: (context, index, animation){
+                        return SlideTransition(
+                          position: animation.drive(offset),
+                          child: TweenAnimationBuilder(
+                            tween: Tween<double>(begin: 0, end: 1),
+                            duration: const Duration(milliseconds: 1000),
+                            curve: Curves.decelerate,
+                            builder: (BuildContext context, double value, Widget? child) {
+                              customPrint.myCustomPrint(animationOptions[index][0]);
+                              return ListTile(
+                                title:
+                                AppTexts(
+                                  textString: animationOptions[index][0],
+                                  textFontSize: sizeAnimation.value,
+                                  fontWeight: FontWeight.bold,
+                                  textColor: colorAnimation.value,
+                                ),
+                                subtitle: AppTexts(
+                                  textString: animationOptions[index][1],
+                                  textFontSize: 10.0.sp,
+                                  fontWeight: FontWeight.bold,
+                                  textColor: (appThemeState).themeClass.textColor_1,
+                                ),
+                              );
+                            },
                           ),
-                          subtitle: AppTexts(
-                            textString: 'Tap once on the button for logo animation',
-                            textFontSize: 10.0.sp,
-                            fontWeight: FontWeight.bold,
-                            textColor: (appThemeState).themeClass.textColor_1,
-                          ),
-                        ),
-                      ),
-                      TweenAnimationBuilder(
-                        tween: Tween<double>(begin: 0, end: 1),
-                        duration: const Duration(milliseconds: 1400),
-                        curve: Curves.bounceInOut,
-                        builder: (BuildContext context, double value, Widget? child) {
-                          return Opacity(
-                            opacity: value,
-                            child: child,
-                          );
-                        },
-                        child: ListTile(
-                          title:
-                          AppTexts(
-                            textString: 'Double tap',
-                            textFontSize: sizeAnimation.value,
-                            fontWeight: FontWeight.bold,
-                            textColor: colorAnimation.value,
-                          ),
-                          subtitle: AppTexts(
-                            textString: 'Double tap on the button for size and color animation',
-                            textFontSize: 10.0.sp,
-                            fontWeight: FontWeight.bold,
-                            textColor: (appThemeState).themeClass.textColor_1,
-                          ),
-                        ),
-                      ),
-                    ],
+                        );
+                      }
                   );
                 },
               ),
