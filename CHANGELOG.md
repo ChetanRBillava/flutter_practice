@@ -33,6 +33,7 @@ Here we write the updates of future releases.
 - Auto popup logic for app bar in logo screen
 - Explicit color animation in Animations screen
 - Tween sequences
+- Curve property
 
 ### Changed
 - Asset image reference from hardcoded values to class oriented

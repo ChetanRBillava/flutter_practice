@@ -20,10 +20,9 @@ class AnimationsScreen extends StatefulWidget {
 
 class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerProviderStateMixin{
   late AnimationController animationController;
-  late Animation<Color?> colorAnimation = ColorTween(begin: Colors.white, end: const Color(
-      0xff40fa31))
-      .animate(animationController);
+  late Animation<Color?> colorAnimation;
   late Animation<double> sizeAnimation;
+  late final Animation<double> curve;
   bool colorAnim = false;
 
   @override
@@ -31,23 +30,26 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
     super.initState();
 
     animationController = AnimationController(
-        duration: const Duration(milliseconds: 250),
+        duration: const Duration(milliseconds: 2000),
         vsync: this
     );
 
-
+    curve = CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn);
+    colorAnimation = ColorTween(begin: Colors.white, end: const Color(
+        0xff40fa31))
+        .animate(curve);
     sizeAnimation = TweenSequence(
       <TweenSequenceItem<double>>[
         TweenSequenceItem<double>(
             tween: Tween<double>(begin: 16.sp, end: 20.sp),
-    weight: 50
+            weight: 50
         ),
         TweenSequenceItem<double>(
-    tween: Tween<double>(begin: 20.sp, end: 16.sp),
-    weight: 50
+            tween: Tween<double>(begin: 20.sp, end: 16.sp),
+            weight: 50
         ),
       ]
-    ).animate(animationController);
+    ).animate(curve);
 
     animationController.addStatusListener((status) {
       customPrint.myCustomPrint(status);
@@ -123,6 +125,7 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
                       TweenAnimationBuilder(
                         tween: Tween<double>(begin: 0, end: 1),
                         duration: const Duration(milliseconds: 1000),
+                        curve: Curves.decelerate,
                         builder: (BuildContext context, double value, Widget? child) {
                           return Opacity(
                             opacity: value,
@@ -147,7 +150,8 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
                       ),
                       TweenAnimationBuilder(
                         tween: Tween<double>(begin: 0, end: 1),
-                        duration: const Duration(milliseconds: 1000),
+                        duration: const Duration(milliseconds: 1400),
+                        curve: Curves.bounceInOut,
                         builder: (BuildContext context, double value, Widget? child) {
                           return Opacity(
                             opacity: value,
