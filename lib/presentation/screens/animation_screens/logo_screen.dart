@@ -37,24 +37,6 @@ class _LogoScreenState extends State<LogoScreen> {
             child: Scaffold(
               backgroundColor: (appThemeState as AppThemeSet).themeClass
                   .primaryColor,
-              ///auto popup app bar
-              appBar: display?AppBarWidget(title: 'Logo screen', centerTitle: false,
-                  actions: [
-                    Padding(
-                      padding: EdgeInsets.only(right: 2.w),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Icon(
-                            Icons.arrow_back
-                        ),
-                      ),
-                    )
-                  ]):const PreferredSize(
-                  preferredSize: Size.fromHeight(0),
-                  child: SizedBox.shrink()
-              ),
               body: Center(
                 child: GestureDetector(
                   onTap: () {

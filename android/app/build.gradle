@@ -60,7 +60,7 @@ android {
             signingConfig signingConfigs.debug
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
-                    def name = "Flutter practice.apk"
+                    def name = "Flutter practice V1.1.8.apk"
                     output.outputFileName = name
                 }
             }

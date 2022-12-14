@@ -20,7 +20,7 @@ class AnimationsScreen extends StatefulWidget {
   State<AnimationsScreen> createState() => _AnimationsScreenState();
 }
 
-class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerProviderStateMixin{
+class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   late AnimationController animationController;
   late Animation<Color?> colorAnimation;
   late Animation<double> sizeAnimation;
@@ -36,7 +36,7 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
   bool colorAnim = false;
 
   @override
-  void initState() {
+  void initState(){
     super.initState();
 
     animationController = AnimationController(
@@ -45,9 +45,7 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
     );
 
     curve = CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn);
-    colorAnimation = ColorTween(begin: Colors.white, end: const Color(
-        0xff40fa31))
-        .animate(curve);
+    doColorAnimations();
     sizeAnimation = TweenSequence(
       <TweenSequenceItem<double>>[
         TweenSequenceItem<double>(
@@ -87,8 +85,21 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
         });
       }
     });
+    WidgetsBinding.instance.addObserver(this);
   }
 
+  Future<void> doColorAnimations() async {
+    Color text1 = await BlocProvider.of<AppThemeCubit>(context).getColor(context, 'text1');
+    Color succ = await BlocProvider.of<AppThemeCubit>(context).getColor(context, 'success');
+    colorAnimation = ColorTween(begin: text1, end: succ).animate(curve);
+  }
+
+  @override
+  Future<void> didChangePlatformBrightness() async {
+    customPrint.myCustomPrint('Platform changed in animations');
+    doColorAnimations();
+    super.didChangePlatformBrightness();
+  }
   @override
   void dispose() {
     animationController.dispose();
@@ -97,8 +108,11 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppThemeCubit, AppThemeState>(
-    builder: (context, appThemeState) {
+    return BlocConsumer<AppThemeCubit, AppThemeState>(
+      listener: (context, appThemeState) {
+        doColorAnimations();
+      },
+      builder: (context, appThemeState) {
         return SafeArea(
             child: Scaffold(
               backgroundColor:(appThemeState as AppThemeSet).themeClass.backgroundColor,
@@ -127,7 +141,7 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
                   }
                 },
                 child: FloatingActionButton(
-                  heroTag: 'logo',
+                    heroTag: 'logo',
                     backgroundColor: (appThemeState).themeClass.primaryColor,
                     child: Image.asset(
                         appThemeState.brightness==Brightness.light?AppImages.logo:AppImages.logoDark,
@@ -145,8 +159,8 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
                 animation: animationController,
                 builder: (BuildContext context, Widget? child) {
                   return AnimatedList(
-                    key: listKey,
-                    initialItemCount: animationOptions.length,
+                      key: listKey,
+                      initialItemCount: animationOptions.length,
                       itemBuilder: (context, index, animation){
                         return SlideTransition(
                           position: animation.drive(offset),
@@ -155,7 +169,6 @@ class _AnimationsScreenState extends State<AnimationsScreen> with SingleTickerPr
                             duration: const Duration(milliseconds: 1000),
                             curve: Curves.decelerate,
                             builder: (BuildContext context, double value, Widget? child) {
-                              customPrint.myCustomPrint(animationOptions[index][0]);
                               return ListTile(
                                 title:
                                 AppTexts(

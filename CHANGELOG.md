@@ -23,7 +23,7 @@ Here we write the updates of future releases.
 ### Security
 
 
-## [1.1.8] - 12-12-2022
+## [1.1.8] - 14-12-2022
 
 ### Added
 - Animations screen
@@ -38,6 +38,8 @@ Here we write the updates of future releases.
 
 ### Changed
 - Asset image reference from hardcoded values to class oriented
+- Splash to home screen animation
+- Sidebar with Stagger list animation
 
 
 ## [1.1.7] - 11-12-2022

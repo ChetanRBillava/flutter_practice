@@ -17,14 +17,14 @@ void main(){
 
 
     test('the initial state is Home screen initial state', (){
-      expect(homeScreenCubit?.state, HomeScreenInitial());
+      expect(homeScreenCubit?.state, const HomeScreenInitial(animated: false));
     });
 
     blocTest<HomeScreenCubit, HomeScreenState>(
       'Home screen incrementer function',
       build: () => HomeScreenCubit(),
       act: (cubit) => cubit.incrementer(1),
-      expect: () => [HomeScreenIncremented(value: 2)],
+      expect: () => [const HomeScreenIncremented(value: 2, animated: false)],
     );
   });
 
