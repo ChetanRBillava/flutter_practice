@@ -27,6 +27,9 @@ class LanguageHi extends Languages {
   @override
   String get va => "आवाज सहायक";
 
+  @override
+  String get anim => "एनिमेशन";
+
   ///home
   @override
   String get homeLabel => "आपने यह बटन इतनी बार दबाया है:";

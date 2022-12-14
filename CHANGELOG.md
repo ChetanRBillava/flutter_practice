@@ -23,6 +23,25 @@ Here we write the updates of future releases.
 ### Security
 
 
+## [1.1.8] - 14-12-2022
+
+### Added
+- Animations screen
+- Tween animation for list tiles in Guides section of Voice assistant screen
+- Hero animation in logo screen
+- Navigation option for animations screen sidebar
+- Auto popup logic for app bar in logo screen
+- Explicit color animation in Animations screen
+- Tween sequences
+- Curve property
+- Stagger list animation
+
+### Changed
+- Asset image reference from hardcoded values to class oriented
+- Splash to home screen animation
+- Sidebar with Stagger list animation
+
+
 ## [1.1.7] - 11-12-2022
 
 ### Added
