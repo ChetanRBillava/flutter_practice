@@ -11,6 +11,7 @@ import '../../core/localisations/languages.dart';
 import '../../logic/cubit/app_theme_cubit.dart';
 import '../router/app_router.dart';
 import '../utils/app_texts.dart';
+import '../utils/custom_print.dart';
 class SideDrawer extends StatefulWidget {
   const SideDrawer({super.key});
 
@@ -18,16 +19,41 @@ class SideDrawer extends StatefulWidget {
   _SideDrawerState createState() => _SideDrawerState();
 }
 
-class _SideDrawerState extends State<SideDrawer> {
-  Timer? timer;
+class _SideDrawerState extends State<SideDrawer> with SingleTickerProviderStateMixin, WidgetsBindingObserver{
+  List sidebarOptions = [];
+  final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
+  Tween<Offset> offset = Tween(begin: const Offset(-1,-1), end: const Offset(0,0));
+
   @override
   void initState() {
     super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      List temp = [
+        [Icons.home, Languages.of(context)?.home as String, AppRouter.home],
+        [Icons.calculate, Languages.of(context)?.calculator as String, AppRouter.calc],
+        [Icons.mood_sharp, Languages.of(context)?.jokes as String, AppRouter.randomJokes],
+        [Icons.list_alt, Languages.of(context)?.myForm as String, AppRouter.myForm],
+        [Icons.translate, Languages.of(context)?.language as String, AppRouter.lang],
+        [Icons.dark_mode, Languages.of(context)?.theme as String, AppRouter.theme],
+        [Icons.mic, Languages.of(context)?.va as String, AppRouter.va],
+        [Icons.animation, Languages.of(context)?.anim as String, AppRouter.animations],
+      ];
+      Future future = Future(() {});
+      for (var element in temp) {
+        future = future.then((value) {
+          return Future.delayed(const Duration(milliseconds: 100), (){
+            customPrint.myCustomPrint(element);
+            sidebarOptions.add(element);
+            listKey.currentState?.insertItem(sidebarOptions.length-1);
+          });
+        });
+      }
+    });
   }
 
   @override
   void dispose() {
-    timer?.cancel();
     super.dispose();
   }
 
@@ -38,123 +64,29 @@ class _SideDrawerState extends State<SideDrawer> {
       builder: (context, appThemeState) {
         return Drawer(
           backgroundColor: (appThemeState as AppThemeSet).themeClass.appbarBackgroundColor,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Column(
-                  children: <Widget>[
-                    ///Home
-                    ListTile(
-                      leading: Icon(Icons.home, color: (appThemeState).themeClass.textColor_1),
-                      title:
-                      AppTexts(
-                        textString: Languages.of(context)?.home as String,
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.of(context).pushNamed(AppRouter.home);
-                      },
+          child: AnimatedList(
+              key: listKey,
+              initialItemCount: sidebarOptions.length,
+              itemBuilder: (context, index, animation){
+                return SlideTransition(
+                  position: animation.drive(offset),
+                  child: ListTile(
+                    leading: Icon(sidebarOptions[index][0], color: (appThemeState).themeClass.textColor_1),
+                    title:
+                    AppTexts(
+                      textString: sidebarOptions[index][1],
+                      textFontSize: 12.0.sp,
+                      fontWeight: FontWeight.bold,
+                      textColor: (appThemeState).themeClass.textColor_1,
                     ),
-                    ///Calculator
-                    ListTile(
-                      leading: Icon(Icons.calculate, color: (appThemeState).themeClass.textColor_1),
-                      title:
-                      AppTexts(
-                        textString: Languages.of(context)?.calculator as String,
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.of(context).pushNamed(AppRouter.calc);
-                      },
-                    ),
-                    ///Random Jokes
-                    ListTile(
-                      leading: Icon(Icons.mood_sharp, color: (appThemeState).themeClass.textColor_1),
-                      title:
-                      AppTexts(
-                        textString: Languages.of(context)?.jokes as String,
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.of(context).pushNamed(AppRouter.randomJokes);
-                      },
-                    ),
-                    ///My form
-                    ListTile(
-                      leading: Icon(Icons.list_alt, color: (appThemeState).themeClass.textColor_1),
-                      title:
-                      AppTexts(
-                        textString: Languages.of(context)?.myForm as String,
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.of(context).pushNamed(AppRouter.myForm);
-                      },
-                    ),
-                    ///Languages
-                    ListTile(
-                      leading: Icon(Icons.translate, color: (appThemeState).themeClass.textColor_1),
-                      title:
-                      AppTexts(
-                        textString: Languages.of(context)?.language as String,
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        //textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.of(context).pushNamed(AppRouter.lang);
-                      },
-                    ),
-                    ///Theme
-                    ListTile(
-                      leading: Icon(Icons.dark_mode, color: (appThemeState).themeClass.textColor_1),
-                      title:
-                      AppTexts(
-                        textString: Languages.of(context)?.theme as String,
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        //textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.of(context).pushNamed(AppRouter.theme);
-                      },
-                    ),
-                    ///Voice assistant
-                    ListTile(
-                      leading: Icon(Icons.mic, color: (appThemeState).themeClass.textColor_1),
-                      title:
-                      AppTexts(
-                        textString: Languages.of(context)?.va as String,
-                        textFontSize: 12.0.sp,
-                        fontWeight: FontWeight.bold,
-                        //textColor: (appThemeState).themeClass.textColor_1,
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.of(context).pushNamed(AppRouter.va);
-                      },
-                    ),
-
-                  ],
-                ),
-              ),
-            ],
-          ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.of(context).pushNamed(sidebarOptions[index][2]);
+                    },
+                  ),
+                );
+              }
+          )
         );
       },
     );

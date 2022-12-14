@@ -27,6 +27,9 @@ class LanguageKn extends Languages {
   @override
   String get va => "ಧ್ವನಿ ಸಹಾಯಕ";
 
+  @override
+  String get anim => "ಅನಿಮೇಷನ್‌ಗಳು";
+
   ///home
   @override
   String get homeLabel => "ನೀವು ಈ ಗುಂಡಿಯನ್ನು ಇಸ್ತು ಬಾರಿ ಒತ್ತಿದಿರಿ:";
